@@ -4,7 +4,7 @@ package cn.liupengstudy.selection_of_college_graduation_design.pojo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(value = "用户登陆实体")
+@ApiModel(value = "学生登陆实体")
 public class StudentsLanding {
 
     @ApiModelProperty(value = "ID")
