@@ -64,4 +64,13 @@ public interface StudentsLandingService {
      **/
     int updateByPrimaryKey(StudentsLanding record);
 
+    /*
+     * @Title findStrudent
+     * @Description 查看学号是否存在
+     * @Param [studentID]
+     * @return int
+     * @Date 1/8/2020 11:20 PM
+     * @Author liupeng
+     **/
+     int findStudentByStudentID(String studentID);
 }

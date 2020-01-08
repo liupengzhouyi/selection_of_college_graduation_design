@@ -2,7 +2,7 @@ package cn.liupengstudy.selection_of_college_graduation_design.mapper;
 
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.StudentsLanding;
 import org.apache.ibatis.annotations.Mapper;
-
+import org.apache.ibatis.annotations.Param;
 
 
 @Mapper
@@ -67,5 +67,15 @@ public interface StudentsLandingMapper {
      * @Author liupeng
      **/
     int updateByPrimaryKey(StudentsLanding record);
+
+    /*
+     * @Title findStrudent
+     * @Description 查看学号是否存在
+     * @Param [studentID]
+     * @return int
+     * @Date 1/8/2020 11:20 PM
+     * @Author liupeng
+     **/
+    StudentsLanding findStudentByStudentID(@Param("studentID")String studentID);
 
 }

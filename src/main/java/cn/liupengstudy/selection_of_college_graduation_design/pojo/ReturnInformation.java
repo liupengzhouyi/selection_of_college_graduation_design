@@ -22,6 +22,12 @@ public class ReturnInformation {
     @ApiModelProperty(value = "为什么")
     private String whay;
 
+    @ApiModelProperty(value = "是否")
+    private boolean key;
+
+    @ApiModelProperty(value = "returnObject")
+    private Object returnObject;
+
     public String getWhatYourDo() {
         return whatYourDo;
     }
@@ -46,12 +52,30 @@ public class ReturnInformation {
         this.whay = whay;
     }
 
+    public boolean isKey() {
+        return key;
+    }
+
+    public void setKey(boolean key) {
+        this.key = key;
+    }
+
+    public Object getReturnObject() {
+        return returnObject;
+    }
+
+    public void setReturnObject(Object returnObject) {
+        this.returnObject = returnObject;
+    }
+
     @Override
     public String toString() {
         return "ReturnInformation{" +
                 "whatYourDo='" + whatYourDo + '\'' +
                 ", results='" + results + '\'' +
                 ", whay='" + whay + '\'' +
+                ", key=" + key +
+                ", returnObject=" + returnObject.toString() +
                 '}';
     }
 }

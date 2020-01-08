@@ -3,6 +3,7 @@ package cn.liupengstudy.selection_of_college_graduation_design.service.impl;
 import cn.liupengstudy.selection_of_college_graduation_design.mapper.StudentsLandingMapper;
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.StudentsLanding;
 import cn.liupengstudy.selection_of_college_graduation_design.service.StudentsLandingService;
+import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -122,4 +123,21 @@ public class StudentsLandingServiceImpl implements StudentsLandingService {
         return this.getStudentsLandingMapper().updateByPrimaryKey(record);
     }
 
+    /*
+     * @Title findStrudent
+     * @Description 查看学号是否存在
+     * @Param [studentID]
+     * @return int
+     * @Date 1/8/2020 11:20 PM
+     * @Author liupeng
+     **/
+    @Override
+    public int findStudentByStudentID(String studentID) {
+        StudentsLanding studentsLanding = this.getStudentsLandingMapper().findStudentByStudentID(studentID);
+        if (null == studentsLanding) {
+            return 0;
+        } else {
+            return 1;
+        }
+    }
 }

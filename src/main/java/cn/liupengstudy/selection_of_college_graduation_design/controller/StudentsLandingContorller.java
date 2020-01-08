@@ -5,6 +5,7 @@ import cn.liupengstudy.selection_of_college_graduation_design.pojo.StringType;
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.StudentsLanding;
 import cn.liupengstudy.selection_of_college_graduation_design.service.impl.StudentsLandingServiceImpl;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -124,6 +125,14 @@ public class StudentsLandingContorller {
             returnInformation = "error";
         }
         return returnInformation;
+    }
+
+    @ApiOperation(value = "查看是否有学生信息")
+    @RequestMapping(value = "findStudent", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public String findStudents(@RequestBody StringType stringType) {
+        int key = this.getStudentsLandingServiceImpl().findStudentByStudentID(stringType.getString());
+        System.out.println("Key:   " + key);
+        return "" + key;
     }
 
 }
