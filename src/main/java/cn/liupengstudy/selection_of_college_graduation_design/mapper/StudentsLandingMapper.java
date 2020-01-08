@@ -3,6 +3,8 @@ package cn.liupengstudy.selection_of_college_graduation_design.mapper;
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.StudentsLanding;
 
 public interface StudentsLandingMapper {
+
+
     int deleteByPrimaryKey(Integer id);
 
     int insert(StudentsLanding record);
