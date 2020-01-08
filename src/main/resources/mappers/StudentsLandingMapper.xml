@@ -12,11 +12,11 @@
     id, studentsID, passwordValue
   </sql>
 
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from studentsLandingTable
-    where id = #{id,jdbcType=INTEGER}
+    where studentsID = #{studentID}
   </select>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
@@ -70,9 +70,8 @@
 
   <update id="updateByPrimaryKey" parameterType="cn.liupengstudy.selection_of_college_graduation_design.pojo.StudentsLanding" >
     update studentsLandingTable
-    set studentsID = #{studentsid,jdbcType=VARCHAR},
-      passwordValue = #{passwordvalue,jdbcType=INTEGER}
-    where id = #{id,jdbcType=INTEGER}
+    set passwordValue = #{passwordvalue,jdbcType=INTEGER}
+    where studentsID = #{studentsid,jdbcType=VARCHAR}
   </update>
 
   <select id="findStudentByStudentID" resultMap="BaseResultMap">

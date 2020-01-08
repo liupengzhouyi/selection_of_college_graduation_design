@@ -16,17 +16,17 @@ public class ReturnInformation {
     @ApiModelProperty(value = "做了什么")
     private String whatYourDo;
 
-    @ApiModelProperty(value = "结果")
-    private String results;
+    @ApiModelProperty(value = "returnNumber")
+    private int number;
 
-    @ApiModelProperty(value = "为什么")
-    private String whay;
-
-    @ApiModelProperty(value = "是否")
+    @ApiModelProperty(value = "return boolean")
     private boolean key;
 
     @ApiModelProperty(value = "returnObject")
     private Object returnObject;
+
+    @ApiModelProperty(value = "为什么")
+    private String why;
 
     public String getWhatYourDo() {
         return whatYourDo;
@@ -36,20 +36,12 @@ public class ReturnInformation {
         this.whatYourDo = whatYourDo;
     }
 
-    public String getResults() {
-        return results;
+    public int getNumber() {
+        return number;
     }
 
-    public void setResults(String results) {
-        this.results = results;
-    }
-
-    public String getWhay() {
-        return whay;
-    }
-
-    public void setWhay(String whay) {
-        this.whay = whay;
+    public void setNumber(int number) {
+        this.number = number;
     }
 
     public boolean isKey() {
@@ -68,14 +60,22 @@ public class ReturnInformation {
         this.returnObject = returnObject;
     }
 
+    public String getWhy() {
+        return why;
+    }
+
+    public void setWhy(String why) {
+        this.why = why;
+    }
+
     @Override
     public String toString() {
         return "ReturnInformation{" +
                 "whatYourDo='" + whatYourDo + '\'' +
-                ", results='" + results + '\'' +
-                ", whay='" + whay + '\'' +
+                ", number=" + number +
                 ", key=" + key +
                 ", returnObject=" + returnObject.toString() +
+                ", why='" + why + '\'' +
                 '}';
     }
 }

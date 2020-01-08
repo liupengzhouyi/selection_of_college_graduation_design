@@ -46,7 +46,7 @@ public interface StudentsLandingMapper {
      * @Date 1/8/2020 7:00 PM
      * @Author liupeng
      **/
-    StudentsLanding selectByPrimaryKey(Integer id);
+    StudentsLanding selectByPrimaryKey(@Param("studentID")String studentID);
 
     /*
      * @Title updateByPrimaryKeySelective

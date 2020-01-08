@@ -1,6 +1,7 @@
 package cn.liupengstudy.selection_of_college_graduation_design.service.impl;
 
 import cn.liupengstudy.selection_of_college_graduation_design.mapper.StudentsLandingMapper;
+import cn.liupengstudy.selection_of_college_graduation_design.pojo.ReturnInformation;
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.StudentsLanding;
 import cn.liupengstudy.selection_of_college_graduation_design.service.StudentsLandingService;
 import io.swagger.models.auth.In;
@@ -93,8 +94,8 @@ public class StudentsLandingServiceImpl implements StudentsLandingService {
      * @Author liupeng
      **/
     @Override
-    public StudentsLanding selectByPrimaryKey(Integer id) {
-        return this.getStudentsLandingMapper().selectByPrimaryKey(id);
+    public StudentsLanding selectByPrimaryKey(String studentID) {
+        return this.getStudentsLandingMapper().selectByPrimaryKey(studentID);
     }
 
     /*
@@ -132,12 +133,20 @@ public class StudentsLandingServiceImpl implements StudentsLandingService {
      * @Author liupeng
      **/
     @Override
-    public int findStudentByStudentID(String studentID) {
+    public ReturnInformation findStudentByStudentID(String studentID) {
         StudentsLanding studentsLanding = this.getStudentsLandingMapper().findStudentByStudentID(studentID);
+        ReturnInformation returnInformation = new ReturnInformation();
+        returnInformation.setWhatYourDo("查看学号是否存在");
         if (null == studentsLanding) {
-            return 0;
+            returnInformation.setKey(false);
+            returnInformation.setWhy("只是在数据库中做一个简单的查询,数据库中没有。");
         } else {
-            return 1;
+            returnInformation.setKey(true);
+            // 学生学号
+            returnInformation.setNumber(studentsLanding.getId());
+            returnInformation.setWhy("只是在数据库中做一个简单的查询,数据库中有。");
         }
+        returnInformation.setReturnObject(null);
+        return returnInformation;
     }
 }

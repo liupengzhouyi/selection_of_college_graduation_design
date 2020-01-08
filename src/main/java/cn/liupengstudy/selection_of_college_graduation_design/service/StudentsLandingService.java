@@ -1,5 +1,6 @@
 package cn.liupengstudy.selection_of_college_graduation_design.service;
 
+import cn.liupengstudy.selection_of_college_graduation_design.pojo.ReturnInformation;
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.StudentsLanding;
 
 public interface StudentsLandingService {
@@ -42,7 +43,7 @@ public interface StudentsLandingService {
      * @Date 1/8/2020 7:00 PM
      * @Author liupeng
      **/
-    StudentsLanding selectByPrimaryKey(Integer id);
+    StudentsLanding selectByPrimaryKey(String studentID);
 
     /*
      * @Title updateByPrimaryKeySelective
@@ -72,5 +73,5 @@ public interface StudentsLandingService {
      * @Date 1/8/2020 11:20 PM
      * @Author liupeng
      **/
-     int findStudentByStudentID(String studentID);
+    ReturnInformation findStudentByStudentID(String studentID);
 }
