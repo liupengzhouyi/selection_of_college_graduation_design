@@ -1,17 +1,16 @@
 package cn.liupengstudy.selection_of_college_graduation_design.pojo;
 
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(value = "学生登陆实体")
-public class StudentsLanding {
+@ApiModel(value = "教师登陆实体")
+public class TeachersLanding {
 
     @ApiModelProperty(value = "ID")
     private Integer id;
 
-    @ApiModelProperty(value = "学号")
-    private String studentsid;
+    @ApiModelProperty(value = "教师编号")
+    private String teacherid;
 
     @ApiModelProperty(value = "密码值")
     private Integer passwordvalue;
@@ -24,12 +23,12 @@ public class StudentsLanding {
         this.id = id;
     }
 
-    public String getStudentsid() {
-        return studentsid;
+    public String getTeacherid() {
+        return teacherid;
     }
 
-    public void setStudentsid(String studentsid) {
-        this.studentsid = studentsid == null ? null : studentsid.trim();
+    public void setTeacherid(String teacherid) {
+        this.teacherid = teacherid == null ? null : teacherid.trim();
     }
 
     public Integer getPasswordvalue() {
@@ -42,9 +41,9 @@ public class StudentsLanding {
 
     @Override
     public String toString() {
-        return "StudentsLanding{" +
+        return "TeachersLanding{" +
                 "id=" + id +
-                ", studentsid='" + studentsid + '\'' +
+                ", teacherid='" + teacherid + '\'' +
                 ", passwordvalue=" + passwordvalue +
                 '}';
     }
