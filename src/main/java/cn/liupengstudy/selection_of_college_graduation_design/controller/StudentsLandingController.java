@@ -35,11 +35,6 @@ public class StudentsLandingController {
         this.studentsLandingTableServiceImpl = studentsLandingTableServiceImpl;
     }
 
-    /*@RequestMapping(value = "say")
-    public String say() {
-        return "String";
-    }*/
-
     @ApiOperation(value = "添加学生登陆信息")
     @RequestMapping(value = "/add", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public String addStudent(@RequestBody StudentsLandingTable studentsLandingTable) {

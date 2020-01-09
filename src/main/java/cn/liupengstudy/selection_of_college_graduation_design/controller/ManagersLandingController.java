@@ -35,11 +35,6 @@ public class ManagersLandingController {
         this.managersLandingTableServiceImpl = managersLandingTableServiceImpl;
     }
 
-    /*@RequestMapping(value = "say")
-    public String say() {
-        return "Say";
-    }*/
-
     @ApiOperation(value = "添加管理员登陆信息")
     @RequestMapping(value = "/add", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public String addStudent(@RequestBody ManagersLandingTable managersLandingTable) {
