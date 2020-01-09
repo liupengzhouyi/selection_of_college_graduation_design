@@ -43,19 +43,31 @@
 
         <!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名-->
         <!--学生登陆表-->
-        <table tableName="studentsLandingTable" domainObjectName="StudentsLandingTable"
+        <!--<table tableName="studentsLandingTable" domainObjectName="StudentsLandingTable"
                enableCountByExample="false"
                enableUpdateByExample="false"
                enableDeleteByExample="false"
                enableSelectByExample="false"
                selectByExampleQueryId="false">
             <property name="useActualColumnNames" value="false"/>
-            <!-- 数据库表主键 -->
+            &lt;!&ndash; 数据库表主键 &ndash;&gt;
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
-        </table>
+        </table>-->
 
         <!--教师登陆表-->
-        <table tableName="teachersLandingTable" domainObjectName="TeachersLandingTable"
+        <!--<table tableName="teachersLandingTable" domainObjectName="TeachersLandingTable"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="false"/>
+            &lt;!&ndash; 数据库表主键 &ndash;&gt;
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>-->
+
+        <!--管理员登陆表-->
+        <table tableName="managersLandingTable" domainObjectName="ManagersLandingTable"
                enableCountByExample="false"
                enableUpdateByExample="false"
                enableDeleteByExample="false"
@@ -65,7 +77,6 @@
             <!-- 数据库表主键 -->
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
-
 
     </context>
 

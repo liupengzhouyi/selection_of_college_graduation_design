@@ -35,10 +35,10 @@ public class TeachersLandingController {
         this.teachersLandingTableServiceImpl = teachersLandingTableServiceImpl;
     }
 
-    @RequestMapping(value = "say")
+    /*@RequestMapping(value = "say")
     public String say() {
         return "String";
-    }
+    }*/
 
     @ApiOperation(value = "添加教师登陆信息")
     @RequestMapping(value = "/add", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
