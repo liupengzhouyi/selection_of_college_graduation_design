@@ -1,6 +1,7 @@
 package cn.liupengstudy.selection_of_college_graduation_design.controller;
 
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.ReturnInformation;
+import cn.liupengstudy.selection_of_college_graduation_design.pojo.StringType;
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.StudentsLandingTable;
 import cn.liupengstudy.selection_of_college_graduation_design.service.impl.StudentsLandingTableServiceImpl;
 import io.swagger.annotations.Api;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * @文件名 cn.liupengstudy.selection_of_college_graduation_design.controller
@@ -74,6 +77,26 @@ public class StudentsLandingController {
             returnInformation.setWhy("add error");
             returnInformation.setKey(false);
         }
+        return returnInformation;
+    }
+
+
+    /*
+     * @Title findStudent
+     * @Description find student information in databases table by student id
+     * @Param [stringType]
+     * @return cn.liupengstudy.selection_of_college_graduation_design.pojo.ReturnInformation
+     * @Date 1/10/2020 11:41 PM
+     * @Author liupeng
+     **/
+    @ApiOperation(value = "寻找学生登陆信息")
+    @RequestMapping(value = "/find", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public ReturnInformation findStudent(@RequestBody StringType stringType) {
+        ReturnInformation returnInformation = new ReturnInformation();
+        List<StudentsLandingTable> list = this.getStudentsLandingTableServiceImpl().findStudentLandingInformationByStudentID(stringType.getString());
+        returnInformation.setWhatYourDo("find student information in databases table by student id");
+        returnInformation.setNumber(list.size());
+        returnInformation.setReturnObject(list);
         return returnInformation;
     }
 

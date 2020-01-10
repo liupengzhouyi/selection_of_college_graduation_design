@@ -6,6 +6,8 @@ import cn.liupengstudy.selection_of_college_graduation_design.service.StudentsLa
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @文件名 cn.liupengstudy.selection_of_college_graduation_design.service.impl
  * @描述
@@ -56,5 +58,10 @@ public class StudentsLandingTableServiceImpl implements StudentsLandingTableServ
     @Override
     public int updateByPrimaryKey(StudentsLandingTable record) {
         return 0;
+    }
+
+    @Override
+    public List<StudentsLandingTable> findStudentLandingInformationByStudentID(String studentID) {
+        return this.getStudentsLandingTableMapper().findStudentLandingInformationByStudentID(studentID);
     }
 }

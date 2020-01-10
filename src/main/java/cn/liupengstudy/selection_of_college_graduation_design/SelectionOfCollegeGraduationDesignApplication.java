@@ -11,9 +11,9 @@ import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 @SpringBootApplication
-@MapperScan("cn.liupengstudy.learningspringbootandmybatis")
 //exclude表示自动配置时不包括Multipart配置
-@EnableAutoConfiguration(exclude = {MultipartAutoConfiguration.class})
+@EnableAutoConfiguration
+// @EnableAutoConfiguration(exclude = {MultipartAutoConfiguration.class})
 @ComponentScan(basePackages = {"cn.liupengstudy.selection_of_college_graduation_design"})
 @MapperScan(value = "cn.liupengstudy.selection_of_college_graduation_design.mapper")
 public class SelectionOfCollegeGraduationDesignApplication {

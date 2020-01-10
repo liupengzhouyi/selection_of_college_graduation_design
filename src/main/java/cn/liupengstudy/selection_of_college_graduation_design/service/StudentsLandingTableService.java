@@ -2,6 +2,9 @@ package cn.liupengstudy.selection_of_college_graduation_design.service;
 
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.StudentsLandingTable;
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.TeachersLandingTable;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * @文件名 cn.liupengstudy.selection_of_college_graduation_design.service
@@ -24,5 +27,7 @@ public interface StudentsLandingTableService {
     int updateByPrimaryKeySelective(StudentsLandingTable record);
 
     int updateByPrimaryKey(StudentsLandingTable record);
+
+    List<StudentsLandingTable> findStudentLandingInformationByStudentID(@Param("studentID")String studentID);
 
 }
