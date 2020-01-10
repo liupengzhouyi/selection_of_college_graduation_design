@@ -33,7 +33,7 @@ public class TeachersLandingTableServiceImpl implements TeachersLandingTableServ
 
     @Override
     public int deleteByPrimaryKey(Integer id) {
-        return 0;
+        return this.getTeachersLandingTableMapper().deleteByPrimaryKey(id);
     }
 
     @Override

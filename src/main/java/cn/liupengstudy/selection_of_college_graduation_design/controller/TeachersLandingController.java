@@ -29,13 +29,30 @@ import java.util.concurrent.RecursiveTask;
 @Api(tags = "教师登陆控制器", description = "提供教师登陆控制器的增删改查方法")
 public class TeachersLandingController {
 
+    // teacher landing service
     @Autowired
     private TeachersLandingTableServiceImpl teachersLandingTableServiceImpl;
 
+    /*
+     * @Title getTeachersLandingTableServiceImpl
+     * @Description //TODO get teacher landing service
+     * @Param []
+     * @return cn.liupengstudy.selection_of_college_graduation_design.service.impl.TeachersLandingTableServiceImpl
+     * @Date 1/11/2020 1:44 AM
+     * @Author liupeng
+     **/
     public TeachersLandingTableServiceImpl getTeachersLandingTableServiceImpl() {
         return teachersLandingTableServiceImpl;
     }
 
+    /*
+     * @Title setTeachersLandingTableServiceImpl
+     * @Description //TODO set teacher landing service
+     * @Param [teachersLandingTableServiceImpl]
+     * @return void
+     * @Date 1/11/2020 1:44 AM
+     * @Author liupeng
+     **/
     public void setTeachersLandingTableServiceImpl(TeachersLandingTableServiceImpl teachersLandingTableServiceImpl) {
         this.teachersLandingTableServiceImpl = teachersLandingTableServiceImpl;
     }
@@ -71,6 +88,41 @@ public class TeachersLandingController {
             } else {
                 returnInformation.setKey(false);
                 returnInformation.setWhy("add error, because there is already has a teacher used this teacher id");
+            }
+        }
+        return returnInformation;
+    }
+
+    /*
+     * @Title delete
+     * @Description //TODO delete teacher landing information
+     * @Param [stringType]
+     * @return cn.liupengstudy.selection_of_college_graduation_design.pojo.ReturnInformation
+     * @Date 1/11/2020 1:55 AM
+     * @Author liupeng
+     **/
+    @ApiOperation(value = "删除教师登陆信息")
+    @RequestMapping(value = "/delete", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public ReturnInformation delete(@RequestBody StringType stringType) {
+        ReturnInformation returnInformation = this.findTeacher(stringType);
+        int has = 0;
+        int teacherID = returnInformation.getNumber();
+        if (returnInformation.isKey()) {
+            has = 1;
+        }
+        returnInformation = new ReturnInformation();
+        returnInformation.setWhatYourDo("delete teacher landing information");
+        if (has == 0) {
+            returnInformation.setKey(false);
+            returnInformation.setWhy("there is no teacher used this teacher id");
+        } else {
+            int k = this.getTeachersLandingTableServiceImpl().deleteByPrimaryKey(teacherID);
+            if (k == 1) {
+                returnInformation.setKey(true);
+                returnInformation.setWhy("delete success");
+            } else {
+                returnInformation.setKey(false);
+                returnInformation.setWhy("delete error");
             }
         }
         return returnInformation;
