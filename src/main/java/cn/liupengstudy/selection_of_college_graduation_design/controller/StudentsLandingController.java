@@ -206,7 +206,6 @@ public class StudentsLandingController {
             returnInformation.setWhy("landing error, no student who uses this school number to register.");
             returnInformation.setKey(false);
         }
-
         return returnInformation;
     }
 

@@ -5,6 +5,8 @@ import cn.liupengstudy.selection_of_college_graduation_design.pojo.StringType;
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.StudentsLandingTable;
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.TeachersLandingTable;
 import cn.liupengstudy.selection_of_college_graduation_design.service.impl.TeachersLandingTableServiceImpl;
+import cn.liupengstudy.selection_of_college_graduation_design.tools.checkPassword.StudentCheckPassword;
+import cn.liupengstudy.selection_of_college_graduation_design.tools.checkPassword.TeacherCheckPassword;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -162,6 +164,47 @@ public class TeachersLandingController {
                 returnInformation.setKey(false);
                 returnInformation.setWhy("update error");
             }
+        }
+        return returnInformation;
+    }
+
+    /*
+     * @Title landing
+     * @Description //TODO cheak teacher landing
+     * @Param [teachersLandingTable]
+     * @return cn.liupengstudy.selection_of_college_graduation_design.pojo.ReturnInformation
+     * @Date 1/11/2020 2:20 AM
+     * @Author liupeng
+     **/
+    @ApiOperation(value = "校验教师登陆信息")
+    @RequestMapping(value = "/landing", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public ReturnInformation landing(@RequestBody TeachersLandingTable teachersLandingTable) {
+        List<TeachersLandingTable> list = null;
+        StringType stringType = new StringType();
+        stringType.setString(teachersLandingTable.getTeacherid());
+        ReturnInformation returnInformation = this.findTeacher(stringType);
+        int key = 0;
+        if (returnInformation.isKey()) {
+            key = 1;
+            // 获取密码值
+            list = (List<TeachersLandingTable>) returnInformation.getReturnObject();
+        }
+        returnInformation = new ReturnInformation();
+        returnInformation.setWhatYourDo("cheak teacher landing");
+        if (key == 1) {
+            // 查找操作
+            TeacherCheckPassword teacherCheckPassword = new TeacherCheckPassword(list.get(0), teachersLandingTable);
+            int k = teacherCheckPassword.check();
+            if (k == 1) {
+                returnInformation.setWhy("landing success");
+                returnInformation.setKey(true);
+            } else {
+                returnInformation.setWhy("landing error, school number or password error");
+                returnInformation.setKey(false);
+            }
+        } else {
+            returnInformation.setWhy("landing error, no teacher who uses this school number to register.");
+            returnInformation.setKey(false);
         }
         return returnInformation;
     }
