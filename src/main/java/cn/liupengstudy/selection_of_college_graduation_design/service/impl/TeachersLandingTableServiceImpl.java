@@ -7,6 +7,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @文件名 cn.liupengstudy.selection_of_college_graduation_design.service.impl
  * @描述
@@ -57,5 +59,10 @@ public class TeachersLandingTableServiceImpl implements TeachersLandingTableServ
     @Override
     public int updateByPrimaryKey(TeachersLandingTable record) {
         return 0;
+    }
+
+    @Override
+    public List<TeachersLandingTable> findTeachersLandingTableInformationByTeacherID(String teacherID) {
+        return this.getTeachersLandingTableMapper().findTeachersLandingTableInformationByTeacherID(teacherID);
     }
 }

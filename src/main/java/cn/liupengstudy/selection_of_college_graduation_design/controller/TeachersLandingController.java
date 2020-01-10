@@ -1,5 +1,7 @@
 package cn.liupengstudy.selection_of_college_graduation_design.controller;
 
+import cn.liupengstudy.selection_of_college_graduation_design.pojo.ReturnInformation;
+import cn.liupengstudy.selection_of_college_graduation_design.pojo.StringType;
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.StudentsLandingTable;
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.TeachersLandingTable;
 import cn.liupengstudy.selection_of_college_graduation_design.service.impl.TeachersLandingTableServiceImpl;
@@ -10,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+import java.util.concurrent.RecursiveTask;
 
 /**
  * @文件名 cn.liupengstudy.selection_of_college_graduation_design.controller
@@ -35,15 +40,67 @@ public class TeachersLandingController {
         this.teachersLandingTableServiceImpl = teachersLandingTableServiceImpl;
     }
 
+    /*
+     * @Title add
+     * @Description //TODO add teacher landing information
+     * @Param [teachersLandingTable]
+     * @return cn.liupengstudy.selection_of_college_graduation_design.pojo.ReturnInformation
+     * @Date 1/11/2020 1:39 AM
+     * @Author liupeng
+     **/
     @ApiOperation(value = "添加教师登陆信息")
     @RequestMapping(value = "/add", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-    public String addStudent(@RequestBody TeachersLandingTable teachersLandingTable) {
-        int k = this.getTeachersLandingTableServiceImpl().insert(teachersLandingTable);
-        if (k == 1) {
-            return "success";
-        } else {
-            return "error";
+    public ReturnInformation add(@RequestBody TeachersLandingTable teachersLandingTable) {
+        StringType stringType = new StringType();
+        stringType.setString(teachersLandingTable.getTeacherid());
+        ReturnInformation returnInformation = this.findTeacher(stringType);
+        int has = 0;
+        if (returnInformation.isKey()) {
+            has = 1;
         }
+        returnInformation = new ReturnInformation();
+        returnInformation.setWhatYourDo("add teacher landing information");
+        if (has == 1) {
+            returnInformation.setKey(false);
+            returnInformation.setWhy("there is already has a teacher used this teacher id");
+        } else {
+            int k = this.getTeachersLandingTableServiceImpl().insert(teachersLandingTable);
+            if (k == 1) {
+                returnInformation.setKey(true);
+                returnInformation.setWhy("add success");
+            } else {
+                returnInformation.setKey(false);
+                returnInformation.setWhy("add error, because there is already has a teacher used this teacher id");
+            }
+        }
+        return returnInformation;
+    }
+
+    /*
+     * @Title findTeacher
+     * @Description //TODO find student information in databases table by teacher id
+     * @Param [stringType]
+     * @return cn.liupengstudy.selection_of_college_graduation_design.pojo.ReturnInformation
+     * @Date 1/11/2020 1:33 AM
+     * @Author liupeng
+     **/
+    @ApiOperation(value = "寻找教师登陆信息")
+    @RequestMapping(value = "/find", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public ReturnInformation findTeacher(@RequestBody StringType stringType) {
+        ReturnInformation returnInformation = new ReturnInformation();
+        List<TeachersLandingTable> list = this.getTeachersLandingTableServiceImpl().findTeachersLandingTableInformationByTeacherID(stringType.getString());
+        returnInformation.setWhatYourDo("find student information in databases table by teacher id");
+        if (list.size() == 1) {
+            returnInformation.setWhy("there is a teacher using this school number");
+            returnInformation.setKey(true);
+            returnInformation.setNumber(list.get(0).getId());
+        } else {
+            returnInformation.setWhy("no teacher using this school number");
+            returnInformation.setKey(false);
+            returnInformation.setNumber(-1);
+        }
+        returnInformation.setReturnObject(list);
+        return returnInformation;
     }
 
 }
