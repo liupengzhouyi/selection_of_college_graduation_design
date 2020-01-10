@@ -36,7 +36,7 @@ public class StudentsLandingController {
 
     /*
      * @Title getStudentsLandingTableServiceImpl
-     * @Description get students landing service
+     * @Description //TODO get students landing service
      * @Param []
      * @return cn.liupengstudy.selection_of_college_graduation_design.service.impl.StudentsLandingTableServiceImpl
      * @Date 1/10/2020 11:27 PM
@@ -48,7 +48,7 @@ public class StudentsLandingController {
 
     /*
      * @Title setStudentsLandingTableServiceImpl
-     * @Description set students landing service
+     * @Description //TODO set students landing service
      * @Param [studentsLandingTableServiceImpl]
      * @return void
      * @Date 1/10/2020 11:28 PM
@@ -60,7 +60,7 @@ public class StudentsLandingController {
 
     /*
      * @Title addStudent
-     * @Description add student landing information
+     * @Description //TODO add student landing information
      * @Param [studentsLandingTable]
      * @return cn.liupengstudy.selection_of_college_graduation_design.pojo.ReturnInformation
      * @Date 1/10/2020 11:37 PM
@@ -96,8 +96,42 @@ public class StudentsLandingController {
     }
 
     /*
+     * @Title delete
+     * @Description //TODO delete student landing information by student school number
+     * @Param [stringType]
+     * @return cn.liupengstudy.selection_of_college_graduation_design.pojo.ReturnInformation
+     * @Date 1/11/2020 1:01 AM
+     * @Author liupeng
+     **/
+    @ApiOperation(value = "删除学生登陆信息")
+    @RequestMapping(value = "/delete", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public ReturnInformation delete(@RequestBody StringType stringType) {
+        ReturnInformation returnInformation = this.findStudent(stringType);
+        int id = -9;
+        if (returnInformation.isKey()) {
+            id = returnInformation.getNumber();
+        }
+        returnInformation = new ReturnInformation();
+        returnInformation.setWhatYourDo("delete student landing information by student school number");
+        if (id != -9) {
+            int key = this.getStudentsLandingTableServiceImpl().deleteByPrimaryKey(id);
+            if (key == 1) {
+                returnInformation.setKey(true);
+                returnInformation.setWhy("delete success");
+            } else {
+                returnInformation.setKey(false);
+                returnInformation.setWhy("delete error");
+            }
+        } else {
+            returnInformation.setKey(false);
+            returnInformation.setWhy("delete error, because no student ueing this school number.");
+        }
+        return returnInformation;
+    }
+
+    /*
      * @Title landing
-     * @Description check student landing information
+     * @Description //TODO check student landing information
      * @Param [studentsLandingTable]
      * @return cn.liupengstudy.selection_of_college_graduation_design.pojo.ReturnInformation
      * @Date 1/11/2020 12:24 AM
@@ -141,7 +175,7 @@ public class StudentsLandingController {
 
     /*
      * @Title findStudent
-     * @Description find student information in databases table by student id
+     * @Description //TODO find student information in databases table by student id
      * @Param [stringType]
      * @return cn.liupengstudy.selection_of_college_graduation_design.pojo.ReturnInformation
      * @Date 1/10/2020 11:41 PM
@@ -153,13 +187,14 @@ public class StudentsLandingController {
         ReturnInformation returnInformation = new ReturnInformation();
         List<StudentsLandingTable> list = this.getStudentsLandingTableServiceImpl().findStudentLandingInformationByStudentID(stringType.getString());
         returnInformation.setWhatYourDo("find student information in databases table by student id");
-        returnInformation.setNumber(list.size());
         if (list.size() == 1) {
             returnInformation.setWhy("there is a student using this school number");
             returnInformation.setKey(true);
+            returnInformation.setNumber(list.get(0).getId());
         } else {
             returnInformation.setWhy("no student using this school number");
             returnInformation.setKey(false);
+            returnInformation.setNumber(-1);
         }
         returnInformation.setReturnObject(list);
         return returnInformation;

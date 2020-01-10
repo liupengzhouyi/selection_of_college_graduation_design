@@ -32,7 +32,7 @@ public class StudentsLandingTableServiceImpl implements StudentsLandingTableServ
 
     @Override
     public int deleteByPrimaryKey(Integer id) {
-        return 0;
+        return this.getStudentsLandingTableMapper().deleteByPrimaryKey(id);
     }
 
     @Override
@@ -57,7 +57,7 @@ public class StudentsLandingTableServiceImpl implements StudentsLandingTableServ
 
     @Override
     public int updateByPrimaryKey(StudentsLandingTable record) {
-        return 0;
+        return this.getStudentsLandingTableMapper().updateByPrimaryKey(record);
     }
 
     @Override
