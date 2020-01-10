@@ -3,6 +3,7 @@ package cn.liupengstudy.selection_of_college_graduation_design.controller;
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.ReturnInformation;
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.StringType;
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.StudentsLandingTable;
+import cn.liupengstudy.selection_of_college_graduation_design.service.StudentsLandingTableService;
 import cn.liupengstudy.selection_of_college_graduation_design.service.impl.StudentsLandingTableServiceImpl;
 import cn.liupengstudy.selection_of_college_graduation_design.tools.checkPassword.StudentCheckPassword;
 import io.swagger.annotations.Api;
@@ -125,6 +126,43 @@ public class StudentsLandingController {
         } else {
             returnInformation.setKey(false);
             returnInformation.setWhy("delete error, because no student ueing this school number.");
+        }
+        return returnInformation;
+    }
+
+    /*
+     * @Title update
+     * @Description //TODO update student landing information
+     * @Param [studentsLandingTable]
+     * @return cn.liupengstudy.selection_of_college_graduation_design.pojo.ReturnInformation
+     * @Date 1/11/2020 1:12 AM
+     * @Author liupeng
+     **/
+    @ApiOperation(value = "更新学生登陆信息")
+    @RequestMapping(value = "/update", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public ReturnInformation update(@RequestBody StudentsLandingTable studentsLandingTable) {
+        StringType stringType = new StringType();
+        stringType.setString(studentsLandingTable.getStudentsid());
+        ReturnInformation returnInformation = this.findStudent(stringType);
+        int id = -9;
+        if (returnInformation.isKey()) {
+            id = returnInformation.getNumber();
+            studentsLandingTable.setId(id);
+        }
+        returnInformation = new ReturnInformation();
+        returnInformation.setWhatYourDo("update student landing information");
+        if (id != -9) {
+            int key = this.getStudentsLandingTableServiceImpl().updateByPrimaryKey(studentsLandingTable);
+            if (key == 1) {
+                returnInformation.setKey(true);
+                returnInformation.setWhy("update success");
+            } else {
+                returnInformation.setKey(false);
+                returnInformation.setWhy("update error");
+            }
+        } else {
+            returnInformation.setKey(false);
+            returnInformation.setWhy("update error, because there is no student landing information in databases.");
         }
         return returnInformation;
     }
