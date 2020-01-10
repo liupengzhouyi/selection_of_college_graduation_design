@@ -129,6 +129,44 @@ public class TeachersLandingController {
     }
 
     /*
+     * @Title update
+     * @Description //TODO update teacher landing information
+     * @Param [teachersLandingTable]
+     * @return cn.liupengstudy.selection_of_college_graduation_design.pojo.ReturnInformation
+     * @Date 1/11/2020 2:07 AM
+     * @Author liupeng
+     **/
+    @ApiOperation(value = "更新教师登陆信息")
+    @RequestMapping(value = "/update", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public ReturnInformation update(@RequestBody TeachersLandingTable teachersLandingTable) {
+        StringType stringType = new StringType();
+        stringType.setString(teachersLandingTable.getTeacherid());
+        ReturnInformation returnInformation = this.findTeacher(stringType);
+        int has = 0;
+        if (returnInformation.isKey()) {
+            has = 1;
+            List<TeachersLandingTable> list = (List<TeachersLandingTable>) returnInformation.getReturnObject();
+            teachersLandingTable.setId(list.get(0).getId());
+        }
+        returnInformation = new ReturnInformation();
+        returnInformation.setWhatYourDo("update teacher landing information");
+        if (has == 0) {
+            returnInformation.setKey(false);
+            returnInformation.setWhy("update error, because there is no teacher used this teacher id");
+        } else {
+            int k = this.getTeachersLandingTableServiceImpl().updateByPrimaryKey(teachersLandingTable);
+            if (k == 1) {
+                returnInformation.setKey(true);
+                returnInformation.setWhy("update success");
+            } else {
+                returnInformation.setKey(false);
+                returnInformation.setWhy("update error");
+            }
+        }
+        return returnInformation;
+    }
+
+    /*
      * @Title findTeacher
      * @Description //TODO find student information in databases table by teacher id
      * @Param [stringType]

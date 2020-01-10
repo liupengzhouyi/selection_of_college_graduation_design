@@ -58,7 +58,7 @@ public class TeachersLandingTableServiceImpl implements TeachersLandingTableServ
 
     @Override
     public int updateByPrimaryKey(TeachersLandingTable record) {
-        return 0;
+        return this.getTeachersLandingTableMapper().updateByPrimaryKey(record);
     }
 
     @Override
