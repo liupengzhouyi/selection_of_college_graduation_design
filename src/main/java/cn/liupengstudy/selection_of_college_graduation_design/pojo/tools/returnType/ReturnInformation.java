@@ -1,4 +1,4 @@
-package cn.liupengstudy.selection_of_college_graduation_design.pojo;
+package cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.returnType;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

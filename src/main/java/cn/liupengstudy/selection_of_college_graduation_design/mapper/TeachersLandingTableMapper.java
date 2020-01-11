@@ -1,10 +1,8 @@
 package cn.liupengstudy.selection_of_college_graduation_design.mapper;
 
-import cn.liupengstudy.selection_of_college_graduation_design.pojo.ReturnInformation;
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.TeachersLandingTable;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 

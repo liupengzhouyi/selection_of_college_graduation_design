@@ -1,12 +1,10 @@
 package cn.liupengstudy.selection_of_college_graduation_design.controller;
 
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.ManagersLandingTable;
-import cn.liupengstudy.selection_of_college_graduation_design.pojo.ReturnInformation;
-import cn.liupengstudy.selection_of_college_graduation_design.pojo.StringType;
-import cn.liupengstudy.selection_of_college_graduation_design.pojo.StudentsLandingTable;
+import cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.returnType.ReturnInformation;
+import cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.dataType.StringType;
 import cn.liupengstudy.selection_of_college_graduation_design.service.impl.ManagersLandingTableServiceImpl;
-import cn.liupengstudy.selection_of_college_graduation_design.tools.checkPassword.ManagerCheckPassword;
-import cn.liupengstudy.selection_of_college_graduation_design.tools.checkPassword.StudentCheckPassword;
+import cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.checkPassword.ManagerCheckPassword;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,7 +43,7 @@ public class ManagersLandingController {
      * @Title addStudent
      * @Description //TODO add manager landing information
      * @Param [managersLandingTable]
-     * @return cn.liupengstudy.selection_of_college_graduation_design.pojo.ReturnInformation
+     * @return cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.returnType.ReturnInformation
      * @Date 1/11/2020 3:48 PM
      * @Author liupeng
      **/
@@ -81,7 +79,7 @@ public class ManagersLandingController {
      * @Title delete
      * @Description //TODO delete manager landing information by manager id
      * @Param [stringType]
-     * @return cn.liupengstudy.selection_of_college_graduation_design.pojo.ReturnInformation
+     * @return cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.returnType.ReturnInformation
      * @Date 1/11/2020 4:16 PM
      * @Author liupeng
      **/
@@ -117,7 +115,7 @@ public class ManagersLandingController {
      * @Title update
      * @Description //TODO update manager landing information
      * @Param [managersLandingTable]
-     * @return cn.liupengstudy.selection_of_college_graduation_design.pojo.ReturnInformation
+     * @return cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.returnType.ReturnInformation
      * @Date 1/11/2020 5:03 PM
      * @Author liupeng
      **/
@@ -154,7 +152,7 @@ public class ManagersLandingController {
      * @Title landing
      * @Description //TODO check manager landing
      * @Param [managersLandingTable]
-     * @return cn.liupengstudy.selection_of_college_graduation_design.pojo.ReturnInformation
+     * @return cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.returnType.ReturnInformation
      * @Date 1/11/2020 5:18 PM
      * @Author liupeng
      **/
@@ -196,7 +194,7 @@ public class ManagersLandingController {
      * @Title fingManager
      * @Description //TODO find manager landing information
      * @Param [stringType]
-     * @return cn.liupengstudy.selection_of_college_graduation_design.pojo.ReturnInformation
+     * @return cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.returnType.ReturnInformation
      * @Date 1/11/2020 3:28 PM
      * @Author liupeng
      **/

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.liupengstudy.selection_of_college_graduation_design.mapper.ClassRelationshipTableMapper" >
+  <resultMap id="BaseResultMap" type="cn.liupengstudy.selection_of_college_graduation_design.pojo.ClassRelationshipTable" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="collageID" property="collageid" jdbcType="INTEGER" />
+    <result column="professionalID" property="professionalid" jdbcType="INTEGER" />
+    <result column="yearOfAdmission" property="yearofadmission" jdbcType="INTEGER" />
+    <result column="headTeacherID" property="headteacherid" jdbcType="VARCHAR" />
+    <result column="classNumber" property="classnumber" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, collageID, professionalID, yearOfAdmission, headTeacherID, classNumber
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from classRelationshipTable
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from classRelationshipTable
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.liupengstudy.selection_of_college_graduation_design.pojo.ClassRelationshipTable" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into classRelationshipTable (collageID, professionalID, yearOfAdmission, 
+      headTeacherID, classNumber)
+    values (#{collageid,jdbcType=INTEGER}, #{professionalid,jdbcType=INTEGER}, #{yearofadmission,jdbcType=INTEGER}, 
+      #{headteacherid,jdbcType=VARCHAR}, #{classnumber,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.liupengstudy.selection_of_college_graduation_design.pojo.ClassRelationshipTable" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into classRelationshipTable
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="collageid != null" >
+        collageID,
+      </if>
+      <if test="professionalid != null" >
+        professionalID,
+      </if>
+      <if test="yearofadmission != null" >
+        yearOfAdmission,
+      </if>
+      <if test="headteacherid != null" >
+        headTeacherID,
+      </if>
+      <if test="classnumber != null" >
+        classNumber,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="collageid != null" >
+        #{collageid,jdbcType=INTEGER},
+      </if>
+      <if test="professionalid != null" >
+        #{professionalid,jdbcType=INTEGER},
+      </if>
+      <if test="yearofadmission != null" >
+        #{yearofadmission,jdbcType=INTEGER},
+      </if>
+      <if test="headteacherid != null" >
+        #{headteacherid,jdbcType=VARCHAR},
+      </if>
+      <if test="classnumber != null" >
+        #{classnumber,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.liupengstudy.selection_of_college_graduation_design.pojo.ClassRelationshipTable" >
+    update classRelationshipTable
+    <set >
+      <if test="collageid != null" >
+        collageID = #{collageid,jdbcType=INTEGER},
+      </if>
+      <if test="professionalid != null" >
+        professionalID = #{professionalid,jdbcType=INTEGER},
+      </if>
+      <if test="yearofadmission != null" >
+        yearOfAdmission = #{yearofadmission,jdbcType=INTEGER},
+      </if>
+      <if test="headteacherid != null" >
+        headTeacherID = #{headteacherid,jdbcType=VARCHAR},
+      </if>
+      <if test="classnumber != null" >
+        classNumber = #{classnumber,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.liupengstudy.selection_of_college_graduation_design.pojo.ClassRelationshipTable" >
+    update classRelationshipTable
+    set collageID = #{collageid,jdbcType=INTEGER},
+      professionalID = #{professionalid,jdbcType=INTEGER},
+      yearOfAdmission = #{yearofadmission,jdbcType=INTEGER},
+      headTeacherID = #{headteacherid,jdbcType=VARCHAR},
+      classNumber = #{classnumber,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

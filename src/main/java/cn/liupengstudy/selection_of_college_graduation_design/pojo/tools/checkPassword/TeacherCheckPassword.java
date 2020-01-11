@@ -1,6 +1,5 @@
-package cn.liupengstudy.selection_of_college_graduation_design.tools.checkPassword;
+package cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.checkPassword;
 
-import cn.liupengstudy.selection_of_college_graduation_design.pojo.StudentsLandingTable;
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.TeachersLandingTable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

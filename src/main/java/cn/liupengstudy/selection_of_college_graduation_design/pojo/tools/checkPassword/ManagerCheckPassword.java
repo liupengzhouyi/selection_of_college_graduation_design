@@ -1,4 +1,4 @@
-package cn.liupengstudy.selection_of_college_graduation_design.tools.checkPassword;
+package cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.checkPassword;
 
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.ManagersLandingTable;
 import io.swagger.annotations.ApiModel;

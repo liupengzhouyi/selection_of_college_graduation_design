@@ -1,11 +1,10 @@
 package cn.liupengstudy.selection_of_college_graduation_design.controller;
 
-import cn.liupengstudy.selection_of_college_graduation_design.pojo.ReturnInformation;
-import cn.liupengstudy.selection_of_college_graduation_design.pojo.StringType;
+import cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.returnType.ReturnInformation;
+import cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.dataType.StringType;
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.StudentsLandingTable;
-import cn.liupengstudy.selection_of_college_graduation_design.service.StudentsLandingTableService;
 import cn.liupengstudy.selection_of_college_graduation_design.service.impl.StudentsLandingTableServiceImpl;
-import cn.liupengstudy.selection_of_college_graduation_design.tools.checkPassword.StudentCheckPassword;
+import cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.checkPassword.StudentCheckPassword;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.print.DocFlavor;
 import java.util.List;
 
 /**
@@ -63,7 +61,7 @@ public class StudentsLandingController {
      * @Title addStudent
      * @Description //TODO add student landing information
      * @Param [studentsLandingTable]
-     * @return cn.liupengstudy.selection_of_college_graduation_design.pojo.ReturnInformation
+     * @return cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.returnType.ReturnInformation
      * @Date 1/10/2020 11:37 PM
      * @Author liupeng
      **/
@@ -100,7 +98,7 @@ public class StudentsLandingController {
      * @Title delete
      * @Description //TODO delete student landing information by student school number
      * @Param [stringType]
-     * @return cn.liupengstudy.selection_of_college_graduation_design.pojo.ReturnInformation
+     * @return cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.returnType.ReturnInformation
      * @Date 1/11/2020 1:01 AM
      * @Author liupeng
      **/
@@ -134,7 +132,7 @@ public class StudentsLandingController {
      * @Title update
      * @Description //TODO update student landing information
      * @Param [studentsLandingTable]
-     * @return cn.liupengstudy.selection_of_college_graduation_design.pojo.ReturnInformation
+     * @return cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.returnType.ReturnInformation
      * @Date 1/11/2020 1:12 AM
      * @Author liupeng
      **/
@@ -171,7 +169,7 @@ public class StudentsLandingController {
      * @Title landing
      * @Description //TODO check student landing information
      * @Param [studentsLandingTable]
-     * @return cn.liupengstudy.selection_of_college_graduation_design.pojo.ReturnInformation
+     * @return cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.returnType.ReturnInformation
      * @Date 1/11/2020 12:24 AM
      * @Author liupeng
      **/
@@ -214,7 +212,7 @@ public class StudentsLandingController {
      * @Title findStudent
      * @Description //TODO find student information in databases table by student id
      * @Param [stringType]
-     * @return cn.liupengstudy.selection_of_college_graduation_design.pojo.ReturnInformation
+     * @return cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.returnType.ReturnInformation
      * @Date 1/10/2020 11:41 PM
      * @Author liupeng
      **/
