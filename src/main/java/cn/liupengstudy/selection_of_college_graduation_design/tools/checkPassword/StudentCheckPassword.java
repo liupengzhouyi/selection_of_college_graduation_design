@@ -54,4 +54,12 @@ public class StudentCheckPassword {
         }
         return returnKey;
     }
+
+    @Override
+    public String toString() {
+        return "StudentCheckPassword{" +
+                "DBstudentsLandingTable=" + DBstudentsLandingTable +
+                ", yourStudentsLandingTable=" + yourStudentsLandingTable +
+                '}';
+    }
 }

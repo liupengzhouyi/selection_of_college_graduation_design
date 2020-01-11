@@ -5,6 +5,8 @@ import cn.liupengstudy.selection_of_college_graduation_design.pojo.ReturnInforma
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.StringType;
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.StudentsLandingTable;
 import cn.liupengstudy.selection_of_college_graduation_design.service.impl.ManagersLandingTableServiceImpl;
+import cn.liupengstudy.selection_of_college_graduation_design.tools.checkPassword.ManagerCheckPassword;
+import cn.liupengstudy.selection_of_college_graduation_design.tools.checkPassword.StudentCheckPassword;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -149,6 +151,48 @@ public class ManagersLandingController {
     }
 
     /*
+     * @Title landing
+     * @Description //TODO check manager landing
+     * @Param [managersLandingTable]
+     * @return cn.liupengstudy.selection_of_college_graduation_design.pojo.ReturnInformation
+     * @Date 1/11/2020 5:18 PM
+     * @Author liupeng
+     **/
+    @ApiOperation(value = "校验管理员登陆信息")
+    @RequestMapping(value = "/landing", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public ReturnInformation landing(@RequestBody ManagersLandingTable managersLandingTable) {
+        List<ManagersLandingTable> list = null;
+        StringType stringType = new StringType();
+        stringType.setString(managersLandingTable.getManagerid());
+        ReturnInformation returnInformation = this.fingManager(stringType);
+        int key = 0;
+        if (returnInformation.isKey()) {
+            key = 1;
+            // 获取密码值
+            list = (List<ManagersLandingTable>) returnInformation.getReturnObject();
+        }
+        returnInformation = new ReturnInformation();
+        returnInformation.setWhatYourDo("manager landing");
+        if (key == 1) {
+            // 查找操作
+            ManagerCheckPassword managerCheckPassword = new ManagerCheckPassword(list.get(0), managersLandingTable);
+            int k = managerCheckPassword.check();
+            if (k == 1) {
+                returnInformation.setWhy("landing success");
+                returnInformation.setKey(true);
+            } else {
+                returnInformation.setWhy("landing error, manager id or password error");
+                returnInformation.setKey(false);
+            }
+        } else {
+            returnInformation.setWhy("landing error, no manager who uses this manager id to register.");
+            returnInformation.setKey(false);
+        }
+        return returnInformation;
+    }
+
+
+    /*
      * @Title fingManager
      * @Description //TODO find manager landing information
      * @Param [stringType]
@@ -169,6 +213,7 @@ public class ManagersLandingController {
         } else {
             returnInformation.setNumber(list.get(0).getId());
             returnInformation.setKey(true);
+            returnInformation.setReturnObject(list);
             returnInformation.setWhy("find success, find manager information in databases");
         }
         return returnInformation;
