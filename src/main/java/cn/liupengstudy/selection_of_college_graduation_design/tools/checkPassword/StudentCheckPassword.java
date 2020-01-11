@@ -1,6 +1,8 @@
 package cn.liupengstudy.selection_of_college_graduation_design.tools.checkPassword;
 
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.StudentsLandingTable;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 /**
  * @author liupeng
@@ -9,10 +11,13 @@ import cn.liupengstudy.selection_of_college_graduation_design.pojo.StudentsLandi
  * @Description TODO
  * @createTime 2020年01月11日 00:34:00
  */
+@ApiModel(value = "学生密码校验实体")
 public class StudentCheckPassword {
 
+    @ApiModelProperty(value = "数据库中的信息实体")
     private StudentsLandingTable DBstudentsLandingTable;
 
+    @ApiModelProperty(value = "用户输入的信息实体")
     private StudentsLandingTable yourStudentsLandingTable;
 
     public StudentCheckPassword() {
