@@ -22,19 +22,51 @@ public class ManagersLandingTableServiceImpl implements ManagersLandingTableServ
     @Autowired
     private ManagersLandingTableMapper managersLandingTableMapper;
 
+    /*
+     * @Title getManagersLandingTableMapper
+     * @Description //TODO get databases mapper tool
+     * @Param []
+     * @return cn.liupengstudy.selection_of_college_graduation_design.mapper.ManagersLandingTableMapper
+     * @Date 1/11/2020 5:55 PM
+     * @Author liupeng
+     **/
     public ManagersLandingTableMapper getManagersLandingTableMapper() {
         return managersLandingTableMapper;
     }
 
+    /*
+     * @Title setManagersLandingTableMapper
+     * @Description //TODO set databases mapper tool
+     * @Param [managersLandingTableMapper]
+     * @return void
+     * @Date 1/11/2020 5:55 PM
+     * @Author liupeng
+     **/
     public void setManagersLandingTableMapper(ManagersLandingTableMapper managersLandingTableMapper) {
         this.managersLandingTableMapper = managersLandingTableMapper;
     }
 
+    /*
+     * @Title deleteByPrimaryKey
+     * @Description //TODO delete manager landing information in databases
+     * @Param [id]
+     * @return int
+     * @Date 1/11/2020 5:54 PM
+     * @Author liupeng
+     **/
     @Override
     public int deleteByPrimaryKey(Integer id) {
         return this.getManagersLandingTableMapper().deleteByPrimaryKey(id);
     }
 
+    /*
+     * @Title insert
+     * @Description //TODO insert manager landing information in databases
+     * @Param [record]
+     * @return int
+     * @Date 1/11/2020 5:53 PM
+     * @Author liupeng
+     **/
     @Override
     public int insert(ManagersLandingTable record) {
         return this.getManagersLandingTableMapper().insert(record);
@@ -55,11 +87,27 @@ public class ManagersLandingTableServiceImpl implements ManagersLandingTableServ
         return 0;
     }
 
+    /*
+     * @Title updateByPrimaryKey
+     * @Description //TODO update manager information in databases
+     * @Param [record]
+     * @return int
+     * @Date 1/11/2020 5:53 PM
+     * @Author liupeng
+     **/
     @Override
     public int updateByPrimaryKey(ManagersLandingTable record) {
         return this.getManagersLandingTableMapper().updateByPrimaryKey(record);
     }
 
+    /*
+     * @Title findManagersLandingTableInformationByManager
+     * @Description //TODO find manager information in database
+     * @Param [managerID]
+     * @return java.util.List<cn.liupengstudy.selection_of_college_graduation_design.pojo.ManagersLandingTable>
+     * @Date 1/11/2020 5:52 PM
+     * @Author liupeng
+     **/
     @Override
     public List<ManagersLandingTable> findManagersLandingTableInformationByManager(String managerID) {
         return this.getManagersLandingTableMapper().findManagersLandingTableInformationByManager(managerID);
