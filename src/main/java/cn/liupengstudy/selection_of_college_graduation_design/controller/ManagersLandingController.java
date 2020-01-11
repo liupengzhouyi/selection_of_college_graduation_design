@@ -112,6 +112,43 @@ public class ManagersLandingController {
     }
 
     /*
+     * @Title update
+     * @Description //TODO update manager landing information
+     * @Param [managersLandingTable]
+     * @return cn.liupengstudy.selection_of_college_graduation_design.pojo.ReturnInformation
+     * @Date 1/11/2020 5:03 PM
+     * @Author liupeng
+     **/
+    @ApiOperation(value = "更新管理员登陆信息")
+    @RequestMapping(value = "update", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public ReturnInformation update(@RequestBody ManagersLandingTable managersLandingTable) {
+        StringType stringType = new StringType();
+        stringType.setString(managersLandingTable.getManagerid());
+        ReturnInformation returnInformation = this.fingManager(stringType);
+        int id = -9;
+        if (returnInformation.isKey()) {
+            id = returnInformation.getNumber();
+            managersLandingTable.setId(id);
+        }
+        returnInformation = new ReturnInformation();
+        returnInformation.setWhatYourDo("update manager landing information");
+        if (id != -9) {
+            int key = this.getManagersLandingTableServiceImpl().updateByPrimaryKey(managersLandingTable);
+            if (key == 1) {
+                returnInformation.setKey(true);
+                returnInformation.setWhy("update success");
+            } else {
+                returnInformation.setKey(false);
+                returnInformation.setWhy("update error");
+            }
+        } else {
+            returnInformation.setKey(false);
+            returnInformation.setWhy("update error, because there is no manager landing information in databases.");
+        }
+        return returnInformation;
+    }
+
+    /*
      * @Title fingManager
      * @Description //TODO find manager landing information
      * @Param [stringType]

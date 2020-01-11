@@ -57,7 +57,7 @@ public class ManagersLandingTableServiceImpl implements ManagersLandingTableServ
 
     @Override
     public int updateByPrimaryKey(ManagersLandingTable record) {
-        return 0;
+        return this.getManagersLandingTableMapper().updateByPrimaryKey(record);
     }
 
     @Override
