@@ -20,4 +20,6 @@ public interface ManagersLandingTableMapper {
     int updateByPrimaryKeySelective(ManagersLandingTable record);
 
     int updateByPrimaryKey(ManagersLandingTable record);
+
+    List<ManagersLandingTable> findManagersLandingTableInformationByManager(@Param("managerID")String managerID);
 }

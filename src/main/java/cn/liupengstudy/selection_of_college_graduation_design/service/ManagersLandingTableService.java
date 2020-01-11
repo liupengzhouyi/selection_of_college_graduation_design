@@ -1,6 +1,9 @@
 package cn.liupengstudy.selection_of_college_graduation_design.service;
 
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.ManagersLandingTable;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * @文件名 cn.liupengstudy.selection_of_college_graduation_design.service
@@ -24,4 +27,5 @@ public interface ManagersLandingTableService {
 
     int updateByPrimaryKey(ManagersLandingTable record);
 
+    List<ManagersLandingTable> findManagersLandingTableInformationByManager(String managerID);
 }

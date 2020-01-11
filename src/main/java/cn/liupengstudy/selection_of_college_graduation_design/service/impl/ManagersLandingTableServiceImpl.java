@@ -6,6 +6,8 @@ import cn.liupengstudy.selection_of_college_graduation_design.service.ManagersLa
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @文件名 cn.liupengstudy.selection_of_college_graduation_design.service.impl
  * @描述
@@ -30,7 +32,7 @@ public class ManagersLandingTableServiceImpl implements ManagersLandingTableServ
 
     @Override
     public int deleteByPrimaryKey(Integer id) {
-        return 0;
+        return this.getManagersLandingTableMapper().deleteByPrimaryKey(id);
     }
 
     @Override
@@ -56,5 +58,10 @@ public class ManagersLandingTableServiceImpl implements ManagersLandingTableServ
     @Override
     public int updateByPrimaryKey(ManagersLandingTable record) {
         return 0;
+    }
+
+    @Override
+    public List<ManagersLandingTable> findManagersLandingTableInformationByManager(String managerID) {
+        return this.getManagersLandingTableMapper().findManagersLandingTableInformationByManager(managerID);
     }
 }

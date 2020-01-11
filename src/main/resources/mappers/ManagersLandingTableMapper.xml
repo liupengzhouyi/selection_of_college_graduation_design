@@ -15,6 +15,9 @@
     from managersLandingTable
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="findManagersLandingTableInformationByManager" resultType="cn.liupengstudy.selection_of_college_graduation_design.pojo.ManagersLandingTable">
+    select * from selection_of_college_graduation_design.managersLandingTable where managerID = #{managerID}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from managersLandingTable
     where id = #{id,jdbcType=INTEGER}
