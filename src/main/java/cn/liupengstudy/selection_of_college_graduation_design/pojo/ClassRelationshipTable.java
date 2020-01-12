@@ -83,22 +83,4 @@ public class ClassRelationshipTable {
                 ", classnumber=" + classnumber +
                 '}';
     }
-
-    /**
-     * @描述 get class relationship information form class relationship table
-     * @参数  []
-     * @返回值  cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.dataType.ClassTypeByLiupeng
-     * @创建人  liupeng
-     * @作者联系方式 LIUPENG.0@outlook.com
-     * @创建时间  2020/1/12 - 2:57 下午
-     * @修改人和其它信息
-     */
-    public ClassTypeByLiupeng getClassTypeByLiupeng() {
-        ClassTypeByLiupeng classTypeByLiupeng = new ClassTypeByLiupeng();
-        classTypeByLiupeng.setCollageID(this.getCollageid());
-        classTypeByLiupeng.setProfessionalID(this.getProfessionalid());
-        classTypeByLiupeng.setYearOfAdmission(this.getYearofadmission());
-        classTypeByLiupeng.setClassNumber(this.getClassnumber());
-        return classTypeByLiupeng;
-    }
 }

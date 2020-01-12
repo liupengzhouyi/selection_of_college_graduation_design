@@ -55,16 +55,41 @@ public class ClassRelationshipController {
         this.classRelationshipTableServiceImpl = classRelationshipTableServiceImpl;
     }
 
+    /**
+     * @描述  add class relationship
+     * @参数  [classRelationshipTable]
+     * @返回值  java.lang.String
+     * @创建人  liupeng
+     * @作者联系方式 LIUPENG.0@outlook.com
+     * @创建时间  2020/1/12 - 3:13 下午
+     * @修改人和其它信息
+     */
     @ApiOperation(value = "添加班级关系信息")
     @RequestMapping(value = "/add", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-    public String add(@RequestBody ClassRelationshipTable classRelationshipTable) {
-        System.out.println(classRelationshipTable.toString());
-        int k = this.getClassRelationshipTableServiceImpl().insert(classRelationshipTable);
-        if (k == 1) {
-            return "Success";
-        } else {
-            return "Error";
+    public ReturnInformation add(@RequestBody ClassRelationshipTable classRelationshipTable) {
+        ClassTypeByLiupeng classTypeByLiupeng = new ClassTypeByLiupeng();
+        classTypeByLiupeng.getClassTypeByLiupengFromClassRelationshipTable(classRelationshipTable);
+        ReturnInformation returnInformation = this.findClassRelationship(classTypeByLiupeng);
+        int has = 0;
+        if (returnInformation.isKey()) {
+            has = 1;
         }
+        returnInformation = new ReturnInformation();
+        returnInformation.setWhatYourDo("add class relationship");
+        if (has == 0) {
+            int k = this.getClassRelationshipTableServiceImpl().insert(classRelationshipTable);
+            if (k == 1) {
+                returnInformation.setKey(true);
+                returnInformation.setWhy("add success");
+            } else {
+                returnInformation.setKey(false);
+                returnInformation.setWhy("add error");
+            }
+        } else {
+            returnInformation.setKey(false);
+            returnInformation.setWhy("add error, because there already has this class relationship in the databases");
+        }
+        return returnInformation;
     }
 
 

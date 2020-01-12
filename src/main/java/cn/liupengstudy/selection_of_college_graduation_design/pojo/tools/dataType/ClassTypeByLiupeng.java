@@ -1,5 +1,6 @@
 package cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.dataType;
 
+import cn.liupengstudy.selection_of_college_graduation_design.pojo.ClassRelationshipTable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import io.swagger.models.auth.In;
@@ -77,5 +78,21 @@ public class ClassTypeByLiupeng {
                 ", yearOfAdmission=" + yearOfAdmission +
                 ", classNumber=" + classNumber +
                 '}';
+    }
+
+    /**
+     * @描述  getClassTypeByLiupengFromClassRelationshipTable
+     * @参数  [classRelationshipTable]
+     * @返回值  []
+     * @创建人  liupeng
+     * @作者联系方式 LIUPENG.0@outlook.com
+     * @创建时间  2020/1/12 - 3:58 下午
+     * @修改人和其它信息
+     */
+    public void getClassTypeByLiupengFromClassRelationshipTable(ClassRelationshipTable classRelationshipTable) {
+        this.setCollageID(classRelationshipTable.getCollageid());
+        this.setProfessionalID(classRelationshipTable.getProfessionalid());
+        this.setYearOfAdmission(classRelationshipTable.getYearofadmission());
+        this.setClassNumber(classRelationshipTable.getClassnumber());
     }
 }
