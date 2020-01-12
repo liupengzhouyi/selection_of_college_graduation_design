@@ -1,5 +1,7 @@
 package cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.dataType;
 
+import cn.liupengstudy.selection_of_college_graduation_design.pojo.CollageAndProfessionalTable;
+
 public class CollageIDAndProfessionalIDType {
 
     private Integer collageID;
@@ -28,6 +30,11 @@ public class CollageIDAndProfessionalIDType {
 
     public void setProfessionalID(Integer professionalID) {
         this.professionalID = professionalID;
+    }
+
+    public void getCollageIDAndProfessionalIDTypeByCollageAndProfessionalTable(CollageAndProfessionalTable collageAndProfessionalTable) {
+        this.setCollageID(collageAndProfessionalTable.getCollageid());
+        this.setProfessionalID(collageAndProfessionalTable.getProfessionalid());
     }
 
     @Override

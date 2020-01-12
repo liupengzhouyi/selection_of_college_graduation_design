@@ -42,17 +42,27 @@ public class CollageAndProfessionalController {
     @ApiOperation(value = "添加学院-专业关系信息")
     @RequestMapping(value = "/add", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public ReturnInformation addCollageAndProfessionalController(@RequestBody CollageAndProfessionalTable collageAndProfessionalTable) {
-        ReturnInformation returnInformation = new ReturnInformation();
-
+        CollageIDAndProfessionalIDType collageIDAndProfessionalIDType = new CollageIDAndProfessionalIDType();
+        collageIDAndProfessionalIDType.getCollageIDAndProfessionalIDTypeByCollageAndProfessionalTable(collageAndProfessionalTable);
+        ReturnInformation returnInformation = this.findColleageAndProfessionalRelationshipByID(collageIDAndProfessionalIDType);
+        int has = 0;
+        if (returnInformation.isKey()) {
+            has = 1;
+        }
+        returnInformation = new ReturnInformation();
         returnInformation.setWhatYourDo("add collage and professional infoemation into databases");
-
-        int key = this.getCollageAndProfessionalTableServiceImpl().insert(collageAndProfessionalTable);
-        if (key == 1) {
-            returnInformation.setKey(true);
-            returnInformation.setWhy("add success");
+        if (has == 0) {
+            int key = this.getCollageAndProfessionalTableServiceImpl().insert(collageAndProfessionalTable);
+            if (key == 1) {
+                returnInformation.setKey(true);
+                returnInformation.setWhy("add success");
+            } else {
+                returnInformation.setKey(false);
+                returnInformation.setWhy("add error");
+            }
         } else {
             returnInformation.setKey(false);
-            returnInformation.setWhy("add error");
+            returnInformation.setWhy("add error, because there is the same information in databases");
         }
         return returnInformation;
     }
