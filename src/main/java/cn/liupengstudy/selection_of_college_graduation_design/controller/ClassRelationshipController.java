@@ -75,7 +75,7 @@ public class ClassRelationshipController {
             has = 1;
         }
         returnInformation = new ReturnInformation();
-        returnInformation.setWhatYourDo("add class relationship");
+        returnInformation.setWhatYourDo("add class relationship information");
         if (has == 0) {
             int k = this.getClassRelationshipTableServiceImpl().insert(classRelationshipTable);
             if (k == 1) {
@@ -92,6 +92,40 @@ public class ClassRelationshipController {
         return returnInformation;
     }
 
+    /**
+     * @描述  delete class relationship information
+     * @参数  [classTypeByLiupeng]
+     * @返回值  cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.returnType.ReturnInformation
+     * @创建人  liupeng
+     * @作者联系方式 LIUPENG.0@outlook.com
+     * @创建时间  2020/1/12 - 6:21 下午
+     * @修改人和其它信息
+     */
+    @ApiOperation(value = "删除班级关系信息")
+    @RequestMapping(value = "/delete", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public ReturnInformation delete(@RequestBody ClassTypeByLiupeng classTypeByLiupeng) {
+        ReturnInformation returnInformation = this.findClassRelationship(classTypeByLiupeng);
+        int id = -1;
+        if (returnInformation.isKey()) {
+            id = returnInformation.getNumber();
+        }
+        returnInformation = new ReturnInformation();
+        returnInformation.setWhatYourDo("delete class relationship information");
+        if (id != -1) {
+            int key = this.getClassRelationshipTableServiceImpl().deleteByPrimaryKey(id);
+            if (key == 1) {
+                returnInformation.setKey(true);
+                returnInformation.setWhy("delete success");
+            } else {
+                returnInformation.setKey(false);
+                returnInformation.setWhy("delete error");
+            }
+        } else {
+            returnInformation.setKey(false);
+            returnInformation.setWhy("delete error,because no information in databases.");
+        }
+        return returnInformation;
+    }
 
     /**
      * @描述 find class relationship infoermation
