@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.liupengstudy.selection_of_college_graduation_design.mapper.CollageAndProfessionalTableMapper" >
+  <resultMap id="BaseResultMap" type="cn.liupengstudy.selection_of_college_graduation_design.pojo.CollageAndProfessionalTable" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="collageId" property="collageid" jdbcType="INTEGER" />
+    <result column="collageName" property="collagename" jdbcType="VARCHAR" />
+    <result column="professionalID" property="professionalid" jdbcType="INTEGER" />
+    <result column="professionalName" property="professionalname" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, collageId, collageName, professionalID, professionalName
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from collageAndProfessionalTable
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from collageAndProfessionalTable
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.liupengstudy.selection_of_college_graduation_design.pojo.CollageAndProfessionalTable" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into collageAndProfessionalTable (collageId, collageName, professionalID, 
+      professionalName)
+    values (#{collageid,jdbcType=INTEGER}, #{collagename,jdbcType=VARCHAR}, #{professionalid,jdbcType=INTEGER}, 
+      #{professionalname,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.liupengstudy.selection_of_college_graduation_design.pojo.CollageAndProfessionalTable" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into collageAndProfessionalTable
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="collageid != null" >
+        collageId,
+      </if>
+      <if test="collagename != null" >
+        collageName,
+      </if>
+      <if test="professionalid != null" >
+        professionalID,
+      </if>
+      <if test="professionalname != null" >
+        professionalName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="collageid != null" >
+        #{collageid,jdbcType=INTEGER},
+      </if>
+      <if test="collagename != null" >
+        #{collagename,jdbcType=VARCHAR},
+      </if>
+      <if test="professionalid != null" >
+        #{professionalid,jdbcType=INTEGER},
+      </if>
+      <if test="professionalname != null" >
+        #{professionalname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.liupengstudy.selection_of_college_graduation_design.pojo.CollageAndProfessionalTable" >
+    update collageAndProfessionalTable
+    <set >
+      <if test="collageid != null" >
+        collageId = #{collageid,jdbcType=INTEGER},
+      </if>
+      <if test="collagename != null" >
+        collageName = #{collagename,jdbcType=VARCHAR},
+      </if>
+      <if test="professionalid != null" >
+        professionalID = #{professionalid,jdbcType=INTEGER},
+      </if>
+      <if test="professionalname != null" >
+        professionalName = #{professionalname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.liupengstudy.selection_of_college_graduation_design.pojo.CollageAndProfessionalTable" >
+    update collageAndProfessionalTable
+    set collageId = #{collageid,jdbcType=INTEGER},
+      collageName = #{collagename,jdbcType=VARCHAR},
+      professionalID = #{professionalid,jdbcType=INTEGER},
+      professionalName = #{professionalname,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
