@@ -50,7 +50,7 @@ public class CollageAndProfessionalTableServiceImpl implements CollageAndProfess
 
     @Override
     public int updateByPrimaryKey(CollageAndProfessionalTable record) {
-        return 0;
+        return this.getCollageAndProfessionalTableMapper().updateByPrimaryKey(record);
     }
 
     @Override

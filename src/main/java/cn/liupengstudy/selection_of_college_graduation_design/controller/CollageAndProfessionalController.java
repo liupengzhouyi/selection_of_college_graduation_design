@@ -67,6 +67,35 @@ public class CollageAndProfessionalController {
         return returnInformation;
     }
 
+    @ApiOperation(value = "更新学院-专业关系信息")
+    @RequestMapping(value = "/update", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public ReturnInformation update(@RequestBody CollageAndProfessionalTable collageAndProfessionalTable) {
+        CollageIDAndProfessionalIDType collageIDAndProfessionalIDType = new CollageIDAndProfessionalIDType();
+        collageIDAndProfessionalIDType.getCollageIDAndProfessionalIDTypeByCollageAndProfessionalTable(collageAndProfessionalTable);
+        ReturnInformation returnInformation = this.findColleageAndProfessionalRelationshipByID(collageIDAndProfessionalIDType);
+        int has = 0;
+        if (returnInformation.isKey()) {
+            has = 1;
+            collageAndProfessionalTable.setId(returnInformation.getNumber());
+        }
+        returnInformation = new ReturnInformation();
+        returnInformation.setWhatYourDo("update collage and professional infoemation into databases");
+        if (has == 1) {
+            int key = this.getCollageAndProfessionalTableServiceImpl().updateByPrimaryKey(collageAndProfessionalTable);
+            if (key == 1) {
+                returnInformation.setKey(true);
+                returnInformation.setWhy("update success");
+            } else {
+                returnInformation.setKey(false);
+                returnInformation.setWhy("update error");
+            }
+        } else {
+            returnInformation.setKey(false);
+            returnInformation.setWhy("update error, because there is the same information in databases");
+        }
+        return returnInformation;
+    }
+
 
     @ApiOperation(value = "查询学院-专业关系信息")
     @RequestMapping(value = "/findByID", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
@@ -80,6 +109,7 @@ public class CollageAndProfessionalController {
             returnInformation.setWhy("find success");
         } else {
             returnInformation.setKey(false);
+            returnInformation.setNumber(-9);
             returnInformation.setWhy("find error, no information in databases");
         }
         return returnInformation;
