@@ -2,9 +2,12 @@ package cn.liupengstudy.selection_of_college_graduation_design.service.impl;
 
 import cn.liupengstudy.selection_of_college_graduation_design.mapper.CollageAndProfessionalTableMapper;
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.CollageAndProfessionalTable;
+import cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.dataType.CollageIDAndProfessionalIDType;
 import cn.liupengstudy.selection_of_college_graduation_design.service.CollageAndProfessionalTableService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class CollageAndProfessionalTableServiceImpl implements CollageAndProfessionalTableService {
@@ -27,7 +30,7 @@ public class CollageAndProfessionalTableServiceImpl implements CollageAndProfess
 
     @Override
     public int insert(CollageAndProfessionalTable record) {
-        return 0;
+        return this.getCollageAndProfessionalTableMapper().insert(record);
     }
 
     @Override
@@ -48,5 +51,10 @@ public class CollageAndProfessionalTableServiceImpl implements CollageAndProfess
     @Override
     public int updateByPrimaryKey(CollageAndProfessionalTable record) {
         return 0;
+    }
+
+    @Override
+    public List<CollageAndProfessionalTable> findColleageAndProfessionalRelationshipByID(CollageIDAndProfessionalIDType collageIDAndProfessionalIDType) {
+        return this.getCollageAndProfessionalTableMapper().findColleageAndProfessionalRelationshipByID(collageIDAndProfessionalIDType.getCollageID(), collageIDAndProfessionalIDType.getProfessionalID());
     }
 }
