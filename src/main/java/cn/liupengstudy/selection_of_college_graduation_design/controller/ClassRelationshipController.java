@@ -1,6 +1,8 @@
 package cn.liupengstudy.selection_of_college_graduation_design.controller;
 
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.ClassRelationshipTable;
+import cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.dataType.ClassTypeByLiupeng;
+import cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.returnType.ReturnInformation;
 import cn.liupengstudy.selection_of_college_graduation_design.service.ClassRelationshipTableService;
 import cn.liupengstudy.selection_of_college_graduation_design.service.impl.ClassRelationshipTableServiceImpl;
 import io.swagger.annotations.Api;
@@ -10,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * @author liupeng
@@ -64,8 +68,31 @@ public class ClassRelationshipController {
     }
 
 
-
-
-
-
+    /**
+     * @描述 find class relationship infoermation
+     * @参数  [classTypeByLiupeng]
+     * @返回值  cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.returnType.ReturnInformation
+     * @创建人  liupeng
+     * @作者联系方式 LIUPENG.0@outlook.com
+     * @创建时间  2020/1/12 - 2:03 下午
+     * @修改人和其它信息
+     */
+    @ApiOperation(value = "查找班级关系信息")
+    @RequestMapping(value = "/find", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public ReturnInformation findClassRelationship(@RequestBody ClassTypeByLiupeng classTypeByLiupeng) {
+        ReturnInformation returnInformation = new ReturnInformation();
+        returnInformation.setWhatYourDo("find class relationship infoermation");
+        System.out.println(classTypeByLiupeng.toString());
+        List<ClassRelationshipTable> list = this.getClassRelationshipTableServiceImpl().findClassRelationship(classTypeByLiupeng);
+        if (list.size() == 0) {
+            returnInformation.setKey(false);
+            returnInformation.setWhy("find error, no this information in databases");
+        } else {
+            returnInformation.setKey(true);
+            returnInformation.setWhy("find Success");
+            returnInformation.setNumber(list.get(0).getId());
+            returnInformation.setReturnObject(list);
+        }
+        return returnInformation;
+    }
 }

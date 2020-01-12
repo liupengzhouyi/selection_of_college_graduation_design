@@ -1,6 +1,7 @@
 package cn.liupengstudy.selection_of_college_graduation_design.service;
 
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.ClassRelationshipTable;
+import cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.dataType.ClassTypeByLiupeng;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -50,15 +51,15 @@ public interface ClassRelationshipTableService {
      **/
     int updateByPrimaryKey(ClassRelationshipTable record);
 
-    /*
-     * @Title findClassInformationByclassID
-     * @Description //TODO find class information  by class id
-     * @Param [classID]
-     * @return java.util.List<cn.liupengstudy.selection_of_college_graduation_design.pojo.ClassRelationshipTable>
-     * @Date 1/11/2020 9:03 PM
-     * @Author liupeng
-     **/
-    // List<ClassRelationshipTable> findClassInformationByclassID(int collageID, int professionallID, int yearOfAdmission, int classNUmber);
-
+    /**
+     * @描述 find class relationship information  by class id
+     * @参数  [classTypeByLiupeng]
+     * @返回值  java.util.List<cn.liupengstudy.selection_of_college_graduation_design.pojo.ClassRelationshipTable>
+     * @创建人  liupeng
+     * @作者联系方式 LIUPENG.0@outlook.com
+     * @创建时间  2020/1/12 - 12:10 下午
+     * @修改人和其它信息
+     */
+    List<ClassRelationshipTable> findClassRelationship(ClassTypeByLiupeng classTypeByLiupeng);
 
 }
