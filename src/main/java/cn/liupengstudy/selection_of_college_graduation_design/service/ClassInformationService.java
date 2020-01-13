@@ -1,6 +1,9 @@
 package cn.liupengstudy.selection_of_college_graduation_design.service;
 
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.ClassInformationTable;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface ClassInformationService {
 
@@ -15,5 +18,7 @@ public interface ClassInformationService {
     int updateByPrimaryKeySelective(ClassInformationTable record);
 
     int updateByPrimaryKey(ClassInformationTable record);
+
+    List<ClassInformationTable> selectClassByStudentID(String studentID);
 
 }

@@ -6,6 +6,8 @@ import cn.liupengstudy.selection_of_college_graduation_design.service.ClassInfor
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author liupeng
  * @version 1.0.0
@@ -55,5 +57,10 @@ public class ClassInformationServiceImpl implements ClassInformationService {
     @Override
     public int updateByPrimaryKey(ClassInformationTable record) {
         return 0;
+    }
+
+    @Override
+    public List<ClassInformationTable> selectClassByStudentID(String studentID) {
+        return this.getClassInformationTableMapper().selectClassByStudentID(studentID);
     }
 }
