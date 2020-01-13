@@ -91,7 +91,19 @@
         </table>-->
 
         <!--学院-专业表-->
-        <table tableName="collageAndProfessionalTable" domainObjectName="CollageAndProfessionalTable"
+        <!--<table tableName="collageAndProfessionalTable" domainObjectName="CollageAndProfessionalTable"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="false"/>
+            &lt;!&ndash; 数据库表主键 &ndash;&gt;
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>-->
+
+        <!--班级表-->
+        <table tableName="classInformationTable" domainObjectName="ClassInformationTable"
                enableCountByExample="false"
                enableUpdateByExample="false"
                enableDeleteByExample="false"
@@ -101,7 +113,6 @@
             <!-- 数据库表主键 -->
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
-
 
     </context>
 

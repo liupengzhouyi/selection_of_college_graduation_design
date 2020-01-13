@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.liupengstudy.selection_of_college_graduation_design.mapper.ClassInformationTableMapper" >
+  <resultMap id="BaseResultMap" type="cn.liupengstudy.selection_of_college_graduation_design.pojo.ClassInformationTable" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="classID" property="classid" jdbcType="INTEGER" />
+    <result column="studentID" property="studentid" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, classID, studentID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from classInformationTable
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from classInformationTable
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.liupengstudy.selection_of_college_graduation_design.pojo.ClassInformationTable" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into classInformationTable (classID, studentID)
+    values (#{classid,jdbcType=INTEGER}, #{studentid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.liupengstudy.selection_of_college_graduation_design.pojo.ClassInformationTable" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into classInformationTable
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="classid != null" >
+        classID,
+      </if>
+      <if test="studentid != null" >
+        studentID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="classid != null" >
+        #{classid,jdbcType=INTEGER},
+      </if>
+      <if test="studentid != null" >
+        #{studentid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.liupengstudy.selection_of_college_graduation_design.pojo.ClassInformationTable" >
+    update classInformationTable
+    <set >
+      <if test="classid != null" >
+        classID = #{classid,jdbcType=INTEGER},
+      </if>
+      <if test="studentid != null" >
+        studentID = #{studentid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.liupengstudy.selection_of_college_graduation_design.pojo.ClassInformationTable" >
+    update classInformationTable
+    set classID = #{classid,jdbcType=INTEGER},
+      studentID = #{studentid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
