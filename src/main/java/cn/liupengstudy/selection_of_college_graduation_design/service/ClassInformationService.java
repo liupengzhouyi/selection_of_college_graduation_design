@@ -21,4 +21,6 @@ public interface ClassInformationService {
 
     List<ClassInformationTable> selectClassByStudentID(Integer studentID);
 
+    List<ClassInformationTable> getStudentsByClassID(Integer classID);
+
 }

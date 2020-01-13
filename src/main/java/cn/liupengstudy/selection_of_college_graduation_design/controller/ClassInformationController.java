@@ -91,6 +91,64 @@ public class ClassInformationController {
     }
 
     /*
+     * @Title deleteByStudentID
+     * @Description //TODO delete class information by student id
+     * @Param [integerType]
+     * @return cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.returnType.ReturnInformation
+     * @Date 1/13/2020 8:49 PM
+     * @Author liupeng
+     **/
+    @ApiOperation(value = "通过ID删除班级成员信息")
+    @RequestMapping(value = "/deleteByStudentID", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public ReturnInformation deleteByStudentID(@RequestBody IntegerType integerType) {
+        ReturnInformation returnInformation = this.findInformationByStudentID(integerType);
+        if (returnInformation.isKey()) {
+            returnInformation = new ReturnInformation();
+            returnInformation.setWhatYourDo("delete class information by student id");
+            int key = this.getClassInformationServiceImpl().deleteByPrimaryKey(returnInformation.getNumber());
+            if (key == 1) {
+                returnInformation.setKey(true);
+                returnInformation.setWhy("delete success");
+            } else {
+                returnInformation.setKey(false);
+                returnInformation.setWhy("delete error");
+            }
+        } else {
+            returnInformation.setKey(false);
+            returnInformation.setWhy("delete error, because no information in databases");
+        }
+        return returnInformation;
+    }
+
+    /*
+     * @Title getStudentsByClassID
+     * @Description //TODO select one class all students
+     * @Param [integerType]
+     * @return cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.returnType.ReturnInformation
+     * @Date 1/13/2020 9:01 PM
+     * @Author liupeng
+     **/
+    @ApiOperation(value = "通过班级ID查找学生信息")
+    @RequestMapping(value = "/findStudentsByClassID", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public ReturnInformation getStudentsByClassID(@RequestBody IntegerType integerType) {
+        ReturnInformation returnInformation = new ReturnInformation();
+        List<ClassInformationTable> list = this.getClassInformationServiceImpl().getStudentsByClassID(integerType.getInteger());
+        returnInformation.setWhatYourDo("select one class all students");
+        if (list.size() == 0) {
+            returnInformation.setKey(false);
+            returnInformation.setNumber(0);
+            returnInformation.setWhy("no information in databases");
+        } else {
+            returnInformation.setKey(true);
+            returnInformation.setWhy("select success");
+            returnInformation.setNumber(list.size());
+            returnInformation.setReturnObject(list);
+        }
+
+        return returnInformation;
+    }
+
+    /*
      * @Title findInformationByStudentID
      * @Description //TODO find class information by student id
      * @Param [stringType]
@@ -99,7 +157,7 @@ public class ClassInformationController {
      * @Author liupeng
      **/
     @ApiOperation(value = "通过学生ID查找班级成员信息")
-    @RequestMapping(value = "/finByID", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/findByID", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public ReturnInformation findInformationByStudentID(@RequestBody IntegerType integerType) {
         ReturnInformation returnInformation = new ReturnInformation();
         returnInformation.setWhatYourDo("find class information by student id");

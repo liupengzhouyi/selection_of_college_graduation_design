@@ -63,4 +63,9 @@ public class ClassInformationServiceImpl implements ClassInformationService {
     public List<ClassInformationTable> selectClassByStudentID(Integer studentID) {
         return this.getClassInformationTableMapper().selectClassByStudentID(studentID);
     }
+
+    @Override
+    public List<ClassInformationTable> getStudentsByClassID(Integer classID) {
+        return this.getClassInformationTableMapper().getStudentsByClassID(classID);
+    }
 }
