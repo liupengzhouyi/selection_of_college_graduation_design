@@ -3,6 +3,7 @@ package cn.liupengstudy.selection_of_college_graduation_design.service.impl;
 import cn.liupengstudy.selection_of_college_graduation_design.mapper.CollageAndProfessionalTableMapper;
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.CollageAndProfessionalTable;
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.dataType.CollageIDAndProfessionalIDType;
+import cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.dataType.CollageNameAndProfessionalNameType;
 import cn.liupengstudy.selection_of_college_graduation_design.service.CollageAndProfessionalTableService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -56,5 +57,10 @@ public class CollageAndProfessionalTableServiceImpl implements CollageAndProfess
     @Override
     public List<CollageAndProfessionalTable> findColleageAndProfessionalRelationshipByID(CollageIDAndProfessionalIDType collageIDAndProfessionalIDType) {
         return this.getCollageAndProfessionalTableMapper().findColleageAndProfessionalRelationshipByID(collageIDAndProfessionalIDType.getCollageID(), collageIDAndProfessionalIDType.getProfessionalID());
+    }
+
+    @Override
+    public List<CollageAndProfessionalTable> findByName(CollageNameAndProfessionalNameType collageNameAndProfessionalNameType) {
+        return this.getCollageAndProfessionalTableMapper().findByName(collageNameAndProfessionalNameType.getCollageName(), collageNameAndProfessionalNameType.getProfessionalName());
     }
 }

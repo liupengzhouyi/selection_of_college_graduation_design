@@ -3,6 +3,7 @@ package cn.liupengstudy.selection_of_college_graduation_design.controller;
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.CollageAndProfessionalTable;
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.dataType.CollageAndProfessionalType;
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.dataType.CollageIDAndProfessionalIDType;
+import cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.dataType.CollageNameAndProfessionalNameType;
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.returnType.ReturnInformation;
 import cn.liupengstudy.selection_of_college_graduation_design.service.impl.CollageAndProfessionalTableServiceImpl;
 import io.swagger.annotations.Api;
@@ -131,6 +132,35 @@ public class CollageAndProfessionalController {
         return returnInformation;
     }
 
+
+    /*
+     * @Title findByName
+     * @Description //TODO find collage and professional relationship by name
+     * @Param [collageAndProfessionalTable]
+     * @return cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.returnType.ReturnInformation
+     * @Date 1/13/2020 1:08 PM
+     * @Author liupeng
+     **/
+    @ApiOperation(value = "通过名称查询学院-专业关系信息")
+    @RequestMapping(value = "/findByName", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public ReturnInformation findByName(@RequestBody CollageNameAndProfessionalNameType collageNameAndProfessionalNameType) {
+        ReturnInformation returnInformation = new ReturnInformation();
+        List<CollageAndProfessionalTable> list = null;
+        returnInformation.setWhatYourDo("find collage and professional relationship by name");
+        list = this.getCollageAndProfessionalTableServiceImpl().findByName(collageNameAndProfessionalNameType);
+        if (list.size() != 0) {
+            returnInformation.setKey(true);
+            returnInformation.setReturnObject(list);
+            returnInformation.setNumber(list.get(0).getId());
+            returnInformation.setWhy("find success");
+        } else {
+            returnInformation.setKey(false);
+            returnInformation.setNumber(-9);
+            returnInformation.setWhy("find error");
+        }
+        return returnInformation;
+    }
+
     /*
      * @Title findColleageAndProfessionalRelationshipByID
      * @Description //TODO find collage and professional relationship
@@ -139,7 +169,7 @@ public class CollageAndProfessionalController {
      * @Date 1/13/2020 12:20 PM
      * @Author liupeng
      **/
-    @ApiOperation(value = "查询学院-专业关系信息")
+    @ApiOperation(value = "通过ID查询学院-专业关系信息")
     @RequestMapping(value = "/findByID", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public ReturnInformation findColleageAndProfessionalRelationshipByID(@RequestBody CollageIDAndProfessionalIDType collageIDAndProfessionalIDType) {
         ReturnInformation returnInformation = new ReturnInformation();

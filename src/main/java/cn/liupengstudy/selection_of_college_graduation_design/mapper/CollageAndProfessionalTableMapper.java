@@ -21,5 +21,7 @@ public interface CollageAndProfessionalTableMapper {
 
     int updateByPrimaryKey(CollageAndProfessionalTable record);
 
-    List<CollageAndProfessionalTable> findColleageAndProfessionalRelationshipByID(@Param("collageID")Integer collageID, @Param("professionnalID")Integer professionnalID);
+    List<CollageAndProfessionalTable> findColleageAndProfessionalRelationshipByID(@Param("collageID")Integer collageID, @Param("professionalID")Integer professionalID);
+
+    List<CollageAndProfessionalTable> findByName(@Param("collageName")String collageName, @Param("professionalName")String professionalName);
 }

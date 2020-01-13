@@ -18,7 +18,10 @@
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="findColleageAndProfessionalRelationshipByID" resultType="cn.liupengstudy.selection_of_college_graduation_design.pojo.CollageAndProfessionalTable">
-    select * from selection_of_college_graduation_design.collageAndProfessionalTable where collageId = #{collageID} and professionalID = #{professionnalID}
+    select * from selection_of_college_graduation_design.collageAndProfessionalTable where collageId = #{collageID} and professionalID = #{professionalID}
+  </select>
+  <select id="findByName" resultType="cn.liupengstudy.selection_of_college_graduation_design.pojo.CollageAndProfessionalTable">
+    select * from selection_of_college_graduation_design.collageAndProfessionalTable where collageName = #{collageName} and professionalName = #{professionalName}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from collageAndProfessionalTable
