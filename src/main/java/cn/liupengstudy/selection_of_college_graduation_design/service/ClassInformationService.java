@@ -1,10 +1,8 @@
-package cn.liupengstudy.selection_of_college_graduation_design.mapper;
+package cn.liupengstudy.selection_of_college_graduation_design.service;
 
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.ClassInformationTable;
-import org.apache.ibatis.annotations.Mapper;
 
-@Mapper
-public interface ClassInformationTableMapper {
+public interface ClassInformationService {
 
     int deleteByPrimaryKey(Integer id);
 
@@ -17,4 +15,5 @@ public interface ClassInformationTableMapper {
     int updateByPrimaryKeySelective(ClassInformationTable record);
 
     int updateByPrimaryKey(ClassInformationTable record);
+
 }
