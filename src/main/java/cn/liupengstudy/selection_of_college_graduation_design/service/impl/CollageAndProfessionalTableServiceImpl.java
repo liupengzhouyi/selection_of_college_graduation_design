@@ -26,7 +26,7 @@ public class CollageAndProfessionalTableServiceImpl implements CollageAndProfess
 
     @Override
     public int deleteByPrimaryKey(Integer id) {
-        return 0;
+        return this.getCollageAndProfessionalTableMapper().deleteByPrimaryKey(id);
     }
 
     @Override

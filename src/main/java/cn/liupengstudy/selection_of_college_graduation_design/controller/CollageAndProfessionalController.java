@@ -8,6 +8,7 @@ import cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.returnT
 import cn.liupengstudy.selection_of_college_graduation_design.service.impl.CollageAndProfessionalTableServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.catalina.valves.rewrite.RewriteCond;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -93,6 +94,74 @@ public class CollageAndProfessionalController {
         return returnInformation;
     }
 
+    /*
+     * @Title deleteByName
+     * @Description //TODO delete by collage name and professional name
+     * @Param [collageNameAndProfessionalNameType]
+     * @return cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.returnType.ReturnInformation
+     * @Date 1/13/2020 4:15 PM
+     * @Author liupeng
+     **/
+    @ApiOperation(value = "通过名称删除学院-专业关系信息")
+    @RequestMapping(value = "/deletByName", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public ReturnInformation deleteByName(@RequestBody CollageNameAndProfessionalNameType collageNameAndProfessionalNameType) {
+        ReturnInformation returnInformation = this.findByName(collageNameAndProfessionalNameType);
+        int has = 0;
+        int id = -9;
+        if (returnInformation.isKey()) {
+            has = 1;
+            id = returnInformation.getNumber();
+        }
+        if (has == 1) {
+            int key = this.getCollageAndProfessionalTableServiceImpl().deleteByPrimaryKey(id);
+            if (key == 1) {
+                returnInformation.setKey(true);
+                returnInformation.setWhy("delete success");
+            } else {
+                returnInformation.setKey(false);
+                returnInformation.setWhy("delete error");
+            }
+        } else {
+            returnInformation.setKey(false);
+            returnInformation.setWhy("delete error, on information in databases");
+        }
+        return returnInformation;
+    }
+
+
+    /*
+     * @Title deleteByID
+     * @Description //TODO delete information by collage id and professional id
+     * @Param [collageIDAndProfessionalIDType]
+     * @return cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.returnType.ReturnInformation
+     * @Date 1/13/2020 4:03 PM
+     * @Author liupeng
+     **/
+    @ApiOperation(value = "通过ID删除学院-专业关系信息")
+    @RequestMapping(value = "/deleteByID", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public ReturnInformation deleteByID(@RequestBody CollageIDAndProfessionalIDType collageIDAndProfessionalIDType) {
+        ReturnInformation returnInformation = this.findColleageAndProfessionalRelationshipByID(collageIDAndProfessionalIDType);
+        int has = 0;
+        int id = -9;
+        if (returnInformation.isKey()) {
+            has = 1;
+            id = returnInformation.getNumber();
+        }
+        if (has == 1) {
+            int key = this.getCollageAndProfessionalTableServiceImpl().deleteByPrimaryKey(id);
+            if (key == 1) {
+                returnInformation.setKey(true);
+                returnInformation.setWhy("delete success");
+            } else {
+                returnInformation.setKey(false);
+                returnInformation.setWhy("delete error");
+            }
+        } else {
+            returnInformation.setKey(false);
+            returnInformation.setWhy("delete error, on information in databases");
+        }
+        return returnInformation;
+    }
 
 
     /*
