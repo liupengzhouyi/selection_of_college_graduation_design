@@ -60,7 +60,7 @@ public class ClassInformationServiceImpl implements ClassInformationService {
     }
 
     @Override
-    public List<ClassInformationTable> selectClassByStudentID(String studentID) {
+    public List<ClassInformationTable> selectClassByStudentID(Integer studentID) {
         return this.getClassInformationTableMapper().selectClassByStudentID(studentID);
     }
 }

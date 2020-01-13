@@ -1,6 +1,7 @@
 package cn.liupengstudy.selection_of_college_graduation_design.controller;
 
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.ClassInformationTable;
+import cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.dataType.IntegerType;
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.dataType.StringType;
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.returnType.ReturnInformation;
 import cn.liupengstudy.selection_of_college_graduation_design.service.impl.ClassInformationServiceImpl;
@@ -64,17 +65,28 @@ public class ClassInformationController {
     @ApiOperation(value = "添加班级成员信息")
     @RequestMapping(value = "/add", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public ReturnInformation add(@RequestBody ClassInformationTable classInformationTable) {
-        ReturnInformation returnInformation = new ReturnInformation();
-        returnInformation.setWhatYourDo("add class information into databases");
-        int k = this.getClassInformationServiceImpl().insert(classInformationTable);
-        if (k == 1) {
-            returnInformation.setKey(true);
-            returnInformation.setWhy("add success");
-        } else {
-            returnInformation.setKey(false);
-            returnInformation.setWhy("add error");
+        IntegerType integerType = new IntegerType();
+        integerType.setInteger(classInformationTable.getStudentid());
+        ReturnInformation returnInformation = this.findInformationByStudentID(integerType);
+        int has = 0;
+        if (returnInformation.isKey()) {
+            has = 1;
         }
-
+        returnInformation = new ReturnInformation();
+        returnInformation.setWhatYourDo("add class information into databases");
+        if (has == 1) {
+            returnInformation.setKey(false);
+            returnInformation.setWhy("add error, because the information already save in the databases");
+        } else {
+            int k = this.getClassInformationServiceImpl().insert(classInformationTable);
+            if (k == 1) {
+                returnInformation.setKey(true);
+                returnInformation.setWhy("add success");
+            } else {
+                returnInformation.setKey(false);
+                returnInformation.setWhy("add error");
+            }
+        }
         return returnInformation;
     }
 
@@ -88,10 +100,10 @@ public class ClassInformationController {
      **/
     @ApiOperation(value = "通过学生ID查找班级成员信息")
     @RequestMapping(value = "/finByID", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-    public ReturnInformation findInformationByStudentID(@RequestBody StringType stringType) {
+    public ReturnInformation findInformationByStudentID(@RequestBody IntegerType integerType) {
         ReturnInformation returnInformation = new ReturnInformation();
         returnInformation.setWhatYourDo("find class information by student id");
-        List<ClassInformationTable> list = this.getClassInformationServiceImpl().selectClassByStudentID(stringType.getString());
+        List<ClassInformationTable> list = this.getClassInformationServiceImpl().selectClassByStudentID(integerType.getInteger());
         if (list.size() == 0) {
             returnInformation.setKey(false);
             returnInformation.setNumber(-9);

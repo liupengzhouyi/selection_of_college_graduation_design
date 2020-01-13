@@ -19,6 +19,6 @@ public interface ClassInformationService {
 
     int updateByPrimaryKey(ClassInformationTable record);
 
-    List<ClassInformationTable> selectClassByStudentID(String studentID);
+    List<ClassInformationTable> selectClassByStudentID(Integer studentID);
 
 }

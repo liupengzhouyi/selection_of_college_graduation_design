@@ -21,5 +21,5 @@ public interface ClassInformationTableMapper {
 
     int updateByPrimaryKey(ClassInformationTable record);
 
-    List<ClassInformationTable> selectClassByStudentID(@Param("studentID")String studentID);
+    List<ClassInformationTable> selectClassByStudentID(@Param("studentID")Integer studentID);
 }
