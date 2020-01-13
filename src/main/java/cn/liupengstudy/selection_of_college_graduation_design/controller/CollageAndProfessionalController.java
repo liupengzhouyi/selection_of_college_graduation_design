@@ -28,17 +28,42 @@ import java.util.List;
 @Api(tags = "学院-专业关系控制器", description = "提供学院-专业关系控制器的增删改查方法")
 public class CollageAndProfessionalController {
 
+    // collage and professional relationship service
     @Autowired
     private CollageAndProfessionalTableServiceImpl collageAndProfessionalTableServiceImpl;
 
+    /*
+     * @Title getCollageAndProfessionalTableServiceImpl
+     * @Description //TODO get collage and professional relationship service
+     * @Param []
+     * @return cn.liupengstudy.selection_of_college_graduation_design.service.impl.CollageAndProfessionalTableServiceImpl
+     * @Date 1/13/2020 12:24 PM
+     * @Author liupeng
+     **/
     public CollageAndProfessionalTableServiceImpl getCollageAndProfessionalTableServiceImpl() {
         return collageAndProfessionalTableServiceImpl;
     }
 
+    /*
+     * @Title setCollageAndProfessionalTableServiceImpl
+     * @Description //TODO set collage and professional relationship service
+     * @Param [collageAndProfessionalTableServiceImpl]
+     * @return void
+     * @Date 1/13/2020 12:24 PM
+     * @Author liupeng
+     **/
     public void setCollageAndProfessionalTableServiceImpl(CollageAndProfessionalTableServiceImpl collageAndProfessionalTableServiceImpl) {
         this.collageAndProfessionalTableServiceImpl = collageAndProfessionalTableServiceImpl;
     }
 
+    /*
+     * @Title addCollageAndProfessionalController
+     * @Description //TODO add collage and professional information into databases
+     * @Param [collageAndProfessionalTable]
+     * @return cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.returnType.ReturnInformation
+     * @Date 1/13/2020 12:22 PM
+     * @Author liupeng
+     **/
     @ApiOperation(value = "添加学院-专业关系信息")
     @RequestMapping(value = "/add", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public ReturnInformation addCollageAndProfessionalController(@RequestBody CollageAndProfessionalTable collageAndProfessionalTable) {
@@ -67,6 +92,16 @@ public class CollageAndProfessionalController {
         return returnInformation;
     }
 
+
+
+    /*
+     * @Title update
+     * @Description //TODO update collage and professional information
+     * @Param [collageAndProfessionalTable]
+     * @return cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.returnType.ReturnInformation
+     * @Date 1/13/2020 12:21 PM
+     * @Author liupeng
+     **/
     @ApiOperation(value = "更新学院-专业关系信息")
     @RequestMapping(value = "/update", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public ReturnInformation update(@RequestBody CollageAndProfessionalTable collageAndProfessionalTable) {
@@ -96,7 +131,14 @@ public class CollageAndProfessionalController {
         return returnInformation;
     }
 
-
+    /*
+     * @Title findColleageAndProfessionalRelationshipByID
+     * @Description //TODO find collage and professional relationship
+     * @Param [collageIDAndProfessionalIDType]
+     * @return cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.returnType.ReturnInformation
+     * @Date 1/13/2020 12:20 PM
+     * @Author liupeng
+     **/
     @ApiOperation(value = "查询学院-专业关系信息")
     @RequestMapping(value = "/findByID", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public ReturnInformation findColleageAndProfessionalRelationshipByID(@RequestBody CollageIDAndProfessionalIDType collageIDAndProfessionalIDType) {
