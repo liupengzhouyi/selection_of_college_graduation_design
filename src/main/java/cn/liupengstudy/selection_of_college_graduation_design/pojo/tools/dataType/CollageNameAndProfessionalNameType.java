@@ -1,6 +1,8 @@
 package cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.dataType;
 
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.CollageAndProfessionalTable;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 /**
  * @author liupeng
@@ -9,10 +11,13 @@ import cn.liupengstudy.selection_of_college_graduation_design.pojo.CollageAndPro
  * @Description TODO
  * @createTime 2020年01月13日 12:28:00
  */
+@ApiModel(value = "学院名称和专业名称实体")
 public class CollageNameAndProfessionalNameType {
 
+    @ApiModelProperty(value = "学院名称")
     private String collageName;
 
+    @ApiModelProperty(value = "专业名称")
     private String professionalName;
 
     public CollageNameAndProfessionalNameType() {

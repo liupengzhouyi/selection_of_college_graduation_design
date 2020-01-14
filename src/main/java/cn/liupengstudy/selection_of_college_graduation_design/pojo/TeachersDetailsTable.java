@@ -1,12 +1,21 @@
 package cn.liupengstudy.selection_of_college_graduation_design.pojo;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(value = "教师详细信息")
 public class TeachersDetailsTable {
+
+    @ApiModelProperty(value = "自增ID")
     private Integer id;
 
+    @ApiModelProperty(value = "教师编号")
     private String teacherid;
 
+    @ApiModelProperty(value = "联系方式")
     private String phonenumber;
 
+    @ApiModelProperty(value = "姓名")
     private String name;
 
     public Integer getId() {
