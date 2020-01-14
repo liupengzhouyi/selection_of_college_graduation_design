@@ -1,14 +1,23 @@
 package cn.liupengstudy.selection_of_college_graduation_design.pojo;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(value = "学院专业关系")
 public class CollageAndProfessionalTable {
+    @ApiModelProperty(value = "自增ID")
     private Integer id;
 
+    @ApiModelProperty(value = "学院ID")
     private Integer collageid;
 
+    @ApiModelProperty(value = "学院名称")
     private String collagename;
 
+    @ApiModelProperty(value = "学院ID")
     private Integer professionalid;
 
+    @ApiModelProperty(value = "学院名称")
     private String professionalname;
 
     public Integer getId() {

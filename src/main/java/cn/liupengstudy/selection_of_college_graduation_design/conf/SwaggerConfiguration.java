@@ -81,7 +81,6 @@ public class SwaggerConfiguration {
                 .title("高校毕业选题系统")
                 .description("swagger RESTful APIs")
                 .termsOfServiceUrl("http://www.test.com/")
-                .contact("xiaoymin@foxmail.com")
                 .version("1.0")
                 .build();
     }

@@ -1,7 +1,9 @@
 package cn.liupengstudy.selection_of_college_graduation_design.mapper;
 
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.StudentsDetailsTable;
+import org.apache.ibatis.annotations.Mapper;
 
+@Mapper
 public interface StudentsDetailsTableMapper {
     int deleteByPrimaryKey(Integer id);
 
