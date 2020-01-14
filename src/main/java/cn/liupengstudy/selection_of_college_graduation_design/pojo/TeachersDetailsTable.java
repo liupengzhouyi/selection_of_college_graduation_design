@@ -49,4 +49,14 @@ public class TeachersDetailsTable {
     public void setName(String name) {
         this.name = name == null ? null : name.trim();
     }
+
+    @Override
+    public String toString() {
+        return "TeachersDetailsTable{" +
+                "id=" + id +
+                ", teacherid='" + teacherid + '\'' +
+                ", phonenumber='" + phonenumber + '\'' +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
