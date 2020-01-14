@@ -16,6 +16,9 @@
     from studentsDetailsTable
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="findByStudentID" resultType="cn.liupengstudy.selection_of_college_graduation_design.pojo.StudentsDetailsTable">
+    select * from selection_of_college_graduation_design.studentsDetailsTable where studentID = #{studentID}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from studentsDetailsTable
     where id = #{id,jdbcType=INTEGER}

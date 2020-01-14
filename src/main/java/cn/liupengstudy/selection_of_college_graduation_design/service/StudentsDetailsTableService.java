@@ -1,6 +1,9 @@
 package cn.liupengstudy.selection_of_college_graduation_design.service;
 
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.StudentsDetailsTable;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * @文件名 cn.liupengstudy.selection_of_college_graduation_design.service
@@ -20,4 +23,5 @@ public interface StudentsDetailsTableService {
 
     int updateByPrimaryKey(StudentsDetailsTable record);
 
+    List<StudentsDetailsTable> findByStudentID(String studentID);
 }

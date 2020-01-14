@@ -2,6 +2,9 @@ package cn.liupengstudy.selection_of_college_graduation_design.mapper;
 
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.StudentsDetailsTable;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 @Mapper
 public interface StudentsDetailsTableMapper {
@@ -16,4 +19,6 @@ public interface StudentsDetailsTableMapper {
     int updateByPrimaryKeySelective(StudentsDetailsTable record);
 
     int updateByPrimaryKey(StudentsDetailsTable record);
+
+    List<StudentsDetailsTable> findByStudentID(@Param("studentID") String studentID);
 }

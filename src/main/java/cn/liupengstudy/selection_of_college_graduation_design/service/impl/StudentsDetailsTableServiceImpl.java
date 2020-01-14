@@ -7,6 +7,8 @@ import cn.liupengstudy.selection_of_college_graduation_design.service.StudentsDe
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @文件名 cn.liupengstudy.selection_of_college_graduation_design.service.impl
  * @描述
@@ -48,5 +50,10 @@ public class StudentsDetailsTableServiceImpl implements StudentsDetailsTableServ
     @Override
     public int updateByPrimaryKey(StudentsDetailsTable record) {
         return this.getStudentsDetailsTableMapper().updateByPrimaryKey(record);
+    }
+
+    @Override
+    public List<StudentsDetailsTable> findByStudentID(String studentID) {
+        return this.getStudentsDetailsTableMapper().findByStudentID(studentID);
     }
 }
