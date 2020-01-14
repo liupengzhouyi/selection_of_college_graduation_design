@@ -127,7 +127,19 @@
         </table>-->
 
         <!--教师详情表-->
-        <table tableName="teachersDetailsTable" domainObjectName="TeachersDetailsTable"
+        <!--<table tableName="teachersDetailsTable" domainObjectName="TeachersDetailsTable"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="false"/>
+            &lt;!&ndash; 数据库表主键 &ndash;&gt;
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>-->
+
+        <!--管理员详情表-->
+        <table tableName="managersDetailsTable" domainObjectName="ManagersDetailsTable"
                enableCountByExample="false"
                enableUpdateByExample="false"
                enableDeleteByExample="false"
@@ -137,7 +149,6 @@
             <!-- 数据库表主键 -->
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
-
     </context>
 
 </generatorConfiguration>
