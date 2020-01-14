@@ -77,6 +77,81 @@ public class StudentsDetailsContrller {
     }
 
     /**
+     * @描述  delete student details information to databases
+     * @参数  [stringType]
+     * @返回值  cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.returnType.ReturnInformation
+     * @创建人  liupeng
+     * @作者联系方式 LIUPENG.0@outlook.com
+     * @创建时间  2020/1/14 - 9:17 下午
+     * @修改人和其它信息
+     */
+    @ApiOperation(value = "通过学生ID删除学生详细信息")
+    @RequestMapping(value = "/delete", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public ReturnInformation deleteByID(@RequestBody StringType stringType) {
+        ReturnInformation returnInformation = this.findByStudentID(stringType);
+        int has = 0;
+        int id = -9;
+        if (returnInformation.isKey()) {
+            has = 1;
+            id = returnInformation.getNumber();
+        }
+        returnInformation = new ReturnInformation();
+        returnInformation.setWhatYourDo("delete student details information to databases");
+        if (has == 0) {
+            returnInformation.setKey(false);
+            returnInformation.setWhy("delete error,no information in the databases");
+        } else {
+            int key = this.getStudentsDetailsTableServiceImpl().deleteByPrimaryKey(id);
+            if (key == 1) {
+                returnInformation.setKey(true);
+                returnInformation.setWhy("delete success");
+            } else {
+                returnInformation.setKey(false);
+                returnInformation.setWhy("delete error");
+            }
+        }
+        return returnInformation;
+    }
+
+    /**
+     * @描述  update student details information to databases
+     * @参数  [studentsDetailsTable]
+     * @返回值  cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.returnType.ReturnInformation
+     * @创建人  liupeng
+     * @作者联系方式 LIUPENG.0@outlook.com
+     * @创建时间  2020/1/14 - 9:19 下午
+     * @修改人和其它信息
+     */
+    @ApiOperation(value = "更新学生详细信息")
+    @RequestMapping(value = "/update", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public ReturnInformation update(@RequestBody StudentsDetailsTable studentsDetailsTable) {
+        StringType stringType = new StringType();
+        stringType.setString(studentsDetailsTable.getStudentid());
+        ReturnInformation returnInformation = this.findByStudentID(stringType);
+        int has = 0;
+        if (returnInformation.isKey()) {
+            has = 1;
+            studentsDetailsTable.setId(returnInformation.getNumber());
+        }
+        returnInformation = new ReturnInformation();
+        returnInformation.setWhatYourDo("update student details information to databases");
+        if (has == 0) {
+            returnInformation.setKey(false);
+            returnInformation.setWhy("update error, no information in databases");
+        } else {
+            int key = this.getStudentsDetailsTableServiceImpl().updateByPrimaryKey(studentsDetailsTable);
+            if (key == 1) {
+                returnInformation.setKey(true);
+                returnInformation.setWhy("update success");
+            } else {
+                returnInformation.setKey(false);
+                returnInformation.setWhy("update error");
+            }
+        }
+        return returnInformation;
+    }
+
+    /**
      * @描述  find student details information in databases by student number
      * @参数  [stringType]
      * @返回值  cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.returnType.ReturnInformation
