@@ -51,15 +51,27 @@ public class StudentsDetailsContrller {
     @ApiOperation(value = "添加学生详细信息")
     @RequestMapping(value = "/add", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public ReturnInformation add(@RequestBody StudentsDetailsTable studentsDetailsTable) {
-        ReturnInformation returnInformation = new ReturnInformation();
+        StringType stringType = new StringType();
+        stringType.setString(studentsDetailsTable.getStudentid());
+        ReturnInformation returnInformation = this.findByStudentID(stringType);
+        int has = 0;
+        if (returnInformation.isKey()) {
+            has = 1;
+        }
+        returnInformation = new ReturnInformation();
         returnInformation.setWhatYourDo("add student details information to databases");
-        int key = this.getStudentsDetailsTableServiceImpl().insert(studentsDetailsTable);
-        if (key == 1) {
-            returnInformation.setKey(true);
-            returnInformation.setWhy("add success");
-        } else {
+        if (has == 1) {
             returnInformation.setKey(false);
-            returnInformation.setWhy("add error");
+            returnInformation.setWhy("add error,the same information in databases");
+        } else {
+            int key = this.getStudentsDetailsTableServiceImpl().insert(studentsDetailsTable);
+            if (key == 1) {
+                returnInformation.setKey(true);
+                returnInformation.setWhy("add success");
+            } else {
+                returnInformation.setKey(false);
+                returnInformation.setWhy("add error");
+            }
         }
         return returnInformation;
     }
