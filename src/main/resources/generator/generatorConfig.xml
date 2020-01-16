@@ -174,10 +174,6 @@
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
 
-
-
-
-
     </context>
 
 </generatorConfiguration>
