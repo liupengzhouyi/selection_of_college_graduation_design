@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * @author liupeng
+ */
 @Service
 public class TeacherAnnouncementTableServiceImpl implements TeacherAnnouncementTableService {
 

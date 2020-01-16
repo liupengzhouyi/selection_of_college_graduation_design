@@ -1,16 +1,25 @@
 package cn.liupengstudy.selection_of_college_graduation_design.pojo;
 
-import java.util.Date;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
+import java.util.Date;
+@ApiModel(value = "教师公告信息实体")
 public class TeacherAnnouncementTable {
+
+    @ApiModelProperty(value = "自增ID")
     private Integer id;
 
+    @ApiModelProperty(value = "作者ID")
     private String authorid;
 
+    @ApiModelProperty(value = "添加日期")
     private Date datetime;
 
+    @ApiModelProperty(value = "标题")
     private String title;
 
+    @ApiModelProperty(value = "内容")
     private String content;
 
     public Integer getId() {
