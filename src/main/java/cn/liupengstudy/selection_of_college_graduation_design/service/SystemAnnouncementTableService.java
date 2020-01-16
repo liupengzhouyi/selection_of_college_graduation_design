@@ -1,6 +1,9 @@
 package cn.liupengstudy.selection_of_college_graduation_design.service;
 
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.SystemAnnouncementTable;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface SystemAnnouncementTableService {
 
@@ -16,5 +19,7 @@ public interface SystemAnnouncementTableService {
     int updateByPrimaryKeySelective(SystemAnnouncementTable record);
 
     int updateByPrimaryKey(SystemAnnouncementTable record);
+
+    List<SystemAnnouncementTable> isPresence(String title);
 
 }

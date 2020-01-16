@@ -6,6 +6,8 @@ import cn.liupengstudy.selection_of_college_graduation_design.service.SystemAnno
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SystemAnnouncementTableServiceImpl implements SystemAnnouncementTableService {
 
@@ -48,5 +50,10 @@ public class SystemAnnouncementTableServiceImpl implements SystemAnnouncementTab
     @Override
     public int updateByPrimaryKey(SystemAnnouncementTable record) {
         return this.getSystemAnnouncementTableMapper().updateByPrimaryKey(record);
+    }
+
+    @Override
+    public List<SystemAnnouncementTable> isPresence(String title) {
+        return this.getSystemAnnouncementTableMapper().isPresence(title);
     }
 }
