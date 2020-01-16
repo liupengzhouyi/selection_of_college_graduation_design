@@ -1,14 +1,12 @@
-package cn.liupengstudy.selection_of_college_graduation_design.mapper;
+package cn.liupengstudy.selection_of_college_graduation_design.service;
 
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.TeacherAnnouncementTable;
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.dataType.StringType;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-@Mapper
-public interface TeacherAnnouncementTableMapper {
+public interface TeacherAnnouncementTableService {
     int deleteByPrimaryKey(Integer id);
 
     int insert(TeacherAnnouncementTable record);
@@ -21,5 +19,5 @@ public interface TeacherAnnouncementTableMapper {
 
     int updateByPrimaryKey(TeacherAnnouncementTable record);
 
-    List<TeacherAnnouncementTable> findByTitle(@Param("title")String string);
+    List<TeacherAnnouncementTable> findByTitle(String string);
 }
