@@ -150,9 +150,20 @@
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>-->
 
-
         <!--系统公告表-->
-        <table tableName="systemAnnouncementTable" domainObjectName="SystemAnnouncementTable"
+       <!-- <table tableName="systemAnnouncementTable" domainObjectName="SystemAnnouncementTable"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="false"/>
+            &lt;!&ndash; 数据库表主键 &ndash;&gt;
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>-->
+
+        <!--教师广告表-->
+        <table tableName="teacherAnnouncementTable" domainObjectName="TeacherAnnouncementTable"
                enableCountByExample="false"
                enableUpdateByExample="false"
                enableDeleteByExample="false"
@@ -162,7 +173,6 @@
             <!-- 数据库表主键 -->
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
-
 
 
 
