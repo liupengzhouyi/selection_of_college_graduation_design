@@ -1,10 +1,9 @@
-package cn.liupengstudy.selection_of_college_graduation_design.mapper;
+package cn.liupengstudy.selection_of_college_graduation_design.service;
 
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.SystemAnnouncementTable;
-import org.apache.ibatis.annotations.Mapper;
 
-@Mapper
-public interface SystemAnnouncementTableMapper {
+public interface SystemAnnouncementTableService {
+
 
     int deleteByPrimaryKey(Integer id);
 
@@ -17,4 +16,5 @@ public interface SystemAnnouncementTableMapper {
     int updateByPrimaryKeySelective(SystemAnnouncementTable record);
 
     int updateByPrimaryKey(SystemAnnouncementTable record);
+
 }
