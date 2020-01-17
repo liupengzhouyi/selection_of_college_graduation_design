@@ -163,7 +163,19 @@
         </table>-->
 
         <!--教师广告表-->
-        <table tableName="teacherAnnouncementTable" domainObjectName="TeacherAnnouncementTable"
+        <!--<table tableName="teacherAnnouncementTable" domainObjectName="TeacherAnnouncementTable"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="false"/>
+            &lt;!&ndash; 数据库表主键 &ndash;&gt;
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>-->
+
+        <!--小组关系表-->
+        <table tableName="groupRelationshipTable" domainObjectName="GroupRelationshipTable"
                enableCountByExample="false"
                enableUpdateByExample="false"
                enableDeleteByExample="false"
