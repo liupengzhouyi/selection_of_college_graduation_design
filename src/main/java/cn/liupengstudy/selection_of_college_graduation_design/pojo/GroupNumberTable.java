@@ -1,14 +1,24 @@
 package cn.liupengstudy.selection_of_college_graduation_design.pojo;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(value = "小组成员实体")
 public class GroupNumberTable {
+
+    @ApiModelProperty(value = "自增ID")
     private Integer id;
 
+    @ApiModelProperty(value = "小组ID")
     private Integer groupid;
 
+    @ApiModelProperty(value = "学生ID")
     private String studentid;
 
+    @ApiModelProperty(value = "毕业设计题目ID")
     private Integer titleid;
 
+    @ApiModelProperty(value = "昵称")
     private String name;
 
     public Integer getId() {
