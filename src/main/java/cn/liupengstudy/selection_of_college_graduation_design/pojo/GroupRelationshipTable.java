@@ -37,4 +37,13 @@ public class GroupRelationshipTable {
     public void setTeacherid(String teacherid) {
         this.teacherid = teacherid == null ? null : teacherid.trim();
     }
+
+    @Override
+    public String toString() {
+        return "GroupRelationshipTable{" +
+                "id=" + id +
+                ", groupname='" + groupname + '\'' +
+                ", teacherid='" + teacherid + '\'' +
+                '}';
+    }
 }

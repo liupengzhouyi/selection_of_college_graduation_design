@@ -24,4 +24,6 @@ public interface GroupRelationshipTableMapper {
 
     List<GroupRelationshipTable> getGroupsByGroupName(@Param("groupName") String groupName);
 
+    GroupRelationshipTable select(@Param("teacherID") String teacherID, @Param("groupName") String groupName);
+
 }

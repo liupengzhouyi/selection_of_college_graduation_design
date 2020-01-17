@@ -2,6 +2,7 @@ package cn.liupengstudy.selection_of_college_graduation_design.service.impl;
 
 import cn.liupengstudy.selection_of_college_graduation_design.mapper.GroupRelationshipTableMapper;
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.GroupRelationshipTable;
+import cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.dataType.GroupRelationshipInformation;
 import cn.liupengstudy.selection_of_college_graduation_design.service.GroupRelationshipTableService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -70,4 +71,8 @@ public class GroupRelationshipTableServiceImpl implements GroupRelationshipTable
         return this.getGroupRelationshipTableMapper().getGroupsByGroupName(groupName);
     }
 
+    @Override
+    public GroupRelationshipTable select(GroupRelationshipInformation groupRelationshipInformation) {
+        return this.getGroupRelationshipTableMapper().select(groupRelationshipInformation.getTeacherID(), groupRelationshipInformation.getGroupName());
+    }
 }

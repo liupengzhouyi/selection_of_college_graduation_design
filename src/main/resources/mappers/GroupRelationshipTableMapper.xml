@@ -21,6 +21,9 @@
   <select id="getGroupsByGroupName" resultType="cn.liupengstudy.selection_of_college_graduation_design.pojo.GroupRelationshipTable">
     select * from selection_of_college_graduation_design.groupRelationshipTable where groupName = #{groupName}
   </select>
+  <select id="select" resultType="cn.liupengstudy.selection_of_college_graduation_design.pojo.GroupRelationshipTable">
+    select * from selection_of_college_graduation_design.groupRelationshipTable where groupName = #{groupName} and teacherID = #{teacherID}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from groupRelationshipTable
     where id = #{id,jdbcType=INTEGER}

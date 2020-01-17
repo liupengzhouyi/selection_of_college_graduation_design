@@ -1,6 +1,7 @@
 package cn.liupengstudy.selection_of_college_graduation_design.service;
 
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.GroupRelationshipTable;
+import cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.dataType.GroupRelationshipInformation;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -29,4 +30,6 @@ public interface GroupRelationshipTableService {
     List<GroupRelationshipTable> getGroupsByTeacherID(String teacherID);
 
     List<GroupRelationshipTable> getGroupsByGroupName(String groupName);
+
+    GroupRelationshipTable select(GroupRelationshipInformation groupRelationshipInformation);
 }
