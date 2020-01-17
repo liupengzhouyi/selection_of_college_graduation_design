@@ -18,7 +18,7 @@
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="findAllGroupNumber" resultType="cn.liupengstudy.selection_of_college_graduation_design.pojo.GroupNumberTable">
-    select * from selection_of_college_graduation_design.groupNumberTable where groupID = #[groupID]
+    select * from selection_of_college_graduation_design.groupNumberTable where groupID = #{groupID}
   </select>
   <select id="findStudent" resultType="cn.liupengstudy.selection_of_college_graduation_design.pojo.GroupNumberTable">
     select * from selection_of_college_graduation_design.groupNumberTable where studentID = #{studentID}

@@ -21,7 +21,7 @@ public interface GroupNumberTableMapper {
 
     int updateByPrimaryKey(GroupNumberTable record);
 
-    List<GroupNumberTable> findAllGroupNumber(@Param("groupID")Integer integer);
+    List<GroupNumberTable> findAllGroupNumber(@Param("groupID")Integer groupID);
 
     List<GroupNumberTable> findStudent(@Param("studentID") String studentID);
 }
