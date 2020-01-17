@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.liupengstudy.selection_of_college_graduation_design.mapper.GroupRelationshipTableMapper" >
+  <resultMap id="BaseResultMap" type="cn.liupengstudy.selection_of_college_graduation_design.pojo.GroupRelationshipTable" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="groupName" property="groupname" jdbcType="VARCHAR" />
+    <result column="teacherID" property="teacherid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, groupName, teacherID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from groupRelationshipTable
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="getGroupsByTeacherID" resultType="cn.liupengstudy.selection_of_college_graduation_design.pojo.GroupRelationshipTable">
+    select * from selection_of_college_graduation_design.groupRelationshipTable where teacherID = #{teacherID}
+  </select>
+  <select id="getGroupsByGroupName" resultType="cn.liupengstudy.selection_of_college_graduation_design.pojo.GroupRelationshipTable">
+    select * from selection_of_college_graduation_design.groupRelationshipTable where groupName = #{groupName}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from groupRelationshipTable
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.liupengstudy.selection_of_college_graduation_design.pojo.GroupRelationshipTable" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into groupRelationshipTable (groupName, teacherID)
+    values (#{groupname,jdbcType=VARCHAR}, #{teacherid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.liupengstudy.selection_of_college_graduation_design.pojo.GroupRelationshipTable" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into groupRelationshipTable
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="groupname != null" >
+        groupName,
+      </if>
+      <if test="teacherid != null" >
+        teacherID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="groupname != null" >
+        #{groupname,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherid != null" >
+        #{teacherid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.liupengstudy.selection_of_college_graduation_design.pojo.GroupRelationshipTable" >
+    update groupRelationshipTable
+    <set >
+      <if test="groupname != null" >
+        groupName = #{groupname,jdbcType=VARCHAR},
+      </if>
+      <if test="teacherid != null" >
+        teacherID = #{teacherid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.liupengstudy.selection_of_college_graduation_design.pojo.GroupRelationshipTable" >
+    update groupRelationshipTable
+    set groupName = #{groupname,jdbcType=VARCHAR},
+      teacherID = #{teacherid,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
