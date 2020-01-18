@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.liupengstudy.selection_of_college_graduation_design.mapper.ChatInformationTableMapper" >
+  <resultMap id="BaseResultMap" type="cn.liupengstudy.selection_of_college_graduation_design.pojo.ChatInformationTable" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="groupID" property="groupid" jdbcType="INTEGER" />
+    <result column="IDtype" property="idtype" jdbcType="INTEGER" />
+    <result column="bodyID" property="bodyid" jdbcType="VARCHAR" />
+    <result column="chat" property="chat" jdbcType="VARCHAR" />
+    <result column="date" property="date" jdbcType="DATE" />
+    <result column="time" property="time" jdbcType="TIME" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, groupID, IDtype, bodyID, chat, date, time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from chatInformationTable
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from chatInformationTable
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.liupengstudy.selection_of_college_graduation_design.pojo.ChatInformationTable" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into chatInformationTable (groupID, IDtype, bodyID, 
+      chat, date, time)
+    values (#{groupid,jdbcType=INTEGER}, #{idtype,jdbcType=INTEGER}, #{bodyid,jdbcType=VARCHAR}, 
+      #{chat,jdbcType=VARCHAR}, #{date,jdbcType=DATE}, #{time,jdbcType=TIME})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.liupengstudy.selection_of_college_graduation_design.pojo.ChatInformationTable" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into chatInformationTable
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="groupid != null" >
+        groupID,
+      </if>
+      <if test="idtype != null" >
+        IDtype,
+      </if>
+      <if test="bodyid != null" >
+        bodyID,
+      </if>
+      <if test="chat != null" >
+        chat,
+      </if>
+      <if test="date != null" >
+        date,
+      </if>
+      <if test="time != null" >
+        time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="groupid != null" >
+        #{groupid,jdbcType=INTEGER},
+      </if>
+      <if test="idtype != null" >
+        #{idtype,jdbcType=INTEGER},
+      </if>
+      <if test="bodyid != null" >
+        #{bodyid,jdbcType=VARCHAR},
+      </if>
+      <if test="chat != null" >
+        #{chat,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null" >
+        #{date,jdbcType=DATE},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=TIME},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.liupengstudy.selection_of_college_graduation_design.pojo.ChatInformationTable" >
+    update chatInformationTable
+    <set >
+      <if test="groupid != null" >
+        groupID = #{groupid,jdbcType=INTEGER},
+      </if>
+      <if test="idtype != null" >
+        IDtype = #{idtype,jdbcType=INTEGER},
+      </if>
+      <if test="bodyid != null" >
+        bodyID = #{bodyid,jdbcType=VARCHAR},
+      </if>
+      <if test="chat != null" >
+        chat = #{chat,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null" >
+        date = #{date,jdbcType=DATE},
+      </if>
+      <if test="time != null" >
+        time = #{time,jdbcType=TIME},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.liupengstudy.selection_of_college_graduation_design.pojo.ChatInformationTable" >
+    update chatInformationTable
+    set groupID = #{groupid,jdbcType=INTEGER},
+      IDtype = #{idtype,jdbcType=INTEGER},
+      bodyID = #{bodyid,jdbcType=VARCHAR},
+      chat = #{chat,jdbcType=VARCHAR},
+      date = #{date,jdbcType=DATE},
+      time = #{time,jdbcType=TIME}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
