@@ -18,6 +18,14 @@
     from paperTable
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="getTeacherAllPaper" resultType="cn.liupengstudy.selection_of_college_graduation_design.pojo.PaperTable">
+    select * from selection_of_college_graduation_design.paperTable where teacherID = #{teahcerID}
+  </select>
+  <select id="getOneYearAllPaper" resultType="cn.liupengstudy.selection_of_college_graduation_design.pojo.PaperTable">
+    select * from selection_of_college_graduation_design.paperTable
+    where unix_timestamp(releaseDate) > unix_timestamp(#{date1})
+    and unix_timestamp(#{date2}) > unix_timestamp(releaseDate)
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from paperTable
     where id = #{id,jdbcType=INTEGER}
