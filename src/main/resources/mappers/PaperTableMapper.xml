@@ -26,6 +26,9 @@
     where unix_timestamp(releaseDate) > unix_timestamp(#{date1})
     and unix_timestamp(#{date2}) > unix_timestamp(releaseDate)
   </select>
+  <select id="getAllPaper" resultType="cn.liupengstudy.selection_of_college_graduation_design.pojo.PaperTable">
+    select * from selection_of_college_graduation_design.paperTable;
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from paperTable
     where id = #{id,jdbcType=INTEGER}

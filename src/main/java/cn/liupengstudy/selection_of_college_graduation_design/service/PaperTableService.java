@@ -29,4 +29,6 @@ public interface PaperTableService {
     List<PaperTable> getOneYearAllPaper(String date1, String date2);
 
     List<PaperTable> getTeacherAllPaper(String teahcerID);
+
+    List<PaperTable> getAllPaper();
 }

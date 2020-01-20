@@ -69,4 +69,9 @@ public class PaperTableServiceImpl implements PaperTableService {
     public List<PaperTable> getTeacherAllPaper(String teahcerID) {
         return this.getPaperTableMapper().getTeacherAllPaper(teahcerID);
     }
+
+    @Override
+    public List<PaperTable> getAllPaper() {
+        return this.getPaperTableMapper().getAllPaper();
+    }
 }

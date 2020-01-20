@@ -10,10 +10,10 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
+
+
 @SpringBootApplication
-//exclude表示自动配置时不包括Multipart配置
-@EnableAutoConfiguration
-// @EnableAutoConfiguration(exclude = {MultipartAutoConfiguration.class})
+@EnableAutoConfiguration //exclude表示自动配置时不包括Multipart配置
 @ComponentScan(basePackages = {"cn.liupengstudy.selection_of_college_graduation_design"})
 @MapperScan(value = "cn.liupengstudy.selection_of_college_graduation_design.mapper")
 public class SelectionOfCollegeGraduationDesignApplication {

@@ -22,7 +22,9 @@ public interface PaperTableMapper {
 
     int updateByPrimaryKey(PaperTable record);
 
-    List<PaperTable> getOneYearAllPaper(@Param("date1") String date1, @Param("date1") String date2);
+    List<PaperTable> getOneYearAllPaper(@Param("date1") String date1, @Param("date2") String date2);
 
     List<PaperTable> getTeacherAllPaper(@Param("teahcerID") String teahcerID);
+
+    List<PaperTable> getAllPaper();
 }
