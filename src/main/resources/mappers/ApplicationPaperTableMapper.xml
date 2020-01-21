@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.liupengstudy.selection_of_college_graduation_design.mapper.ApplicationPaperTableMapper" >
+  <resultMap id="BaseResultMap" type="cn.liupengstudy.selection_of_college_graduation_design.pojo.ApplicationPaperTable" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="paperID" property="paperid" jdbcType="INTEGER" />
+    <result column="studentID" property="studentid" jdbcType="VARCHAR" />
+    <result column="isPass" property="ispass" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, paperID, studentID, isPass
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from applicationPaperTable
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="getAllPass" resultType="cn.liupengstudy.selection_of_college_graduation_design.pojo.ApplicationPaperTable">
+    select * from selection_of_college_graduation_design.applicationPaperTable where isPass = 1
+  </select>
+  <select id="getAllNotPass" resultType="cn.liupengstudy.selection_of_college_graduation_design.pojo.ApplicationPaperTable">
+    select * from selection_of_college_graduation_design.applicationPaperTable where isPass = 0
+  </select>
+  <select id="getStudentAll" resultType="cn.liupengstudy.selection_of_college_graduation_design.pojo.ApplicationPaperTable">
+    select * from selection_of_college_graduation_design.applicationPaperTable where studentID = #{studentID}
+  </select>
+  <select id="findSame" resultType="cn.liupengstudy.selection_of_college_graduation_design.pojo.ApplicationPaperTable">
+    select * from selection_of_college_graduation_design.applicationPaperTable where paperID = #{paperID} and studentID = #{studentID} and isPass = #{iPass}
+  </select>
+  <update id="pass">
+    update applicationPaperTable set selection_of_college_graduation_design.applicationPaperTable.isPass = 1 where id = #{id}
+  </update>
+  <update id="notPass">
+    update applicationPaperTable set selection_of_college_graduation_design.applicationPaperTable.isPass = -1 where id = #{id}
+  </update>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from applicationPaperTable
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.liupengstudy.selection_of_college_graduation_design.pojo.ApplicationPaperTable" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into applicationPaperTable (paperID, studentID, isPass
+      )
+    values (#{paperid,jdbcType=INTEGER}, #{studentid,jdbcType=VARCHAR}, #{ispass,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.liupengstudy.selection_of_college_graduation_design.pojo.ApplicationPaperTable" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into applicationPaperTable
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="paperid != null" >
+        paperID,
+      </if>
+      <if test="studentid != null" >
+        studentID,
+      </if>
+      <if test="ispass != null" >
+        isPass,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="paperid != null" >
+        #{paperid,jdbcType=INTEGER},
+      </if>
+      <if test="studentid != null" >
+        #{studentid,jdbcType=VARCHAR},
+      </if>
+      <if test="ispass != null" >
+        #{ispass,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.liupengstudy.selection_of_college_graduation_design.pojo.ApplicationPaperTable" >
+    update applicationPaperTable
+    <set >
+      <if test="paperid != null" >
+        paperID = #{paperid,jdbcType=INTEGER},
+      </if>
+      <if test="studentid != null" >
+        studentID = #{studentid,jdbcType=VARCHAR},
+      </if>
+      <if test="ispass != null" >
+        isPass = #{ispass,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.liupengstudy.selection_of_college_graduation_design.pojo.ApplicationPaperTable" >
+    update applicationPaperTable
+    set paperID = #{paperid,jdbcType=INTEGER},
+      studentID = #{studentid,jdbcType=VARCHAR},
+      isPass = #{ispass,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
