@@ -211,7 +211,19 @@
         </table>-->
 
         <!--论文表-->
-        <table tableName="paperTable" domainObjectName="PaperTable"
+        <!--<table tableName="paperTable" domainObjectName="PaperTable"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="false"/>
+            &lt;!&ndash; 数据库表主键 &ndash;&gt;
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>-->
+
+        <!--论文申请表-->
+        <table tableName="applicationPaperTable" domainObjectName="ApplicationPaperTable"
                enableCountByExample="false"
                enableUpdateByExample="false"
                enableDeleteByExample="false"
