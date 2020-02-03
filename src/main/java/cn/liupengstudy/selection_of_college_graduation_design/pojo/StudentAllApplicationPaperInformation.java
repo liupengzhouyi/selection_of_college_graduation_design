@@ -79,4 +79,15 @@ public class StudentAllApplicationPaperInformation {
     public void setTeachername(String teachername) {
         this.teachername = teachername;
     }
+
+    @Override
+    public String toString() {
+        return "StudentAllApplicationPaperInformation{" +
+                "isPass=" + isPass +
+                ", paperID=" + paperID +
+                ", paperName='" + paperName + '\'' +
+                ", teacherID='" + teacherID + '\'' +
+                ", teachername='" + teachername + '\'' +
+                '}';
+    }
 }
