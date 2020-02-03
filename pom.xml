@@ -13,14 +13,14 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>selection_of_college_graduation_design</name>
     <description>Demo project for Spring Boot</description>
-    <!--<packaging>war</packaging>-->
+    <packaging>war</packaging>
     <properties>
         <java.version>13</java.version>
     </properties>
 
     <dependencies>
         <!--打包依赖-->
-        <!--<dependency>
+        <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>3.1.0</version>
@@ -32,16 +32,14 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            &lt;!&ndash; 移除嵌入式tomcat插件 &ndash;&gt;
+            <!-- 移除嵌入式tomcat插件 -->
             <exclusions>
                 <exclusion>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-starter-tomcat</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>-->
-
-
+        </dependency>
 
 
         <dependency>
