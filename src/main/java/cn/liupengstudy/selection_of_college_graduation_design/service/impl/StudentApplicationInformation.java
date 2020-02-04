@@ -69,6 +69,14 @@ public class StudentApplicationInformation {
         createList();
     }
 
+    public List<StudentAllApplicationPaperInformation> getList() {
+        return list;
+    }
+
+    public void setList(List<StudentAllApplicationPaperInformation> list) {
+        this.list = list;
+    }
+
     public static void main(String[] args) throws SQLException {
         StudentApplicationInformation studentApplicationInformation = new StudentApplicationInformation("1667159125");
         for (int i = 0; i < studentApplicationInformation.list.size(); i++) {

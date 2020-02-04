@@ -74,6 +74,14 @@ public class TeacherApplicationInformation {
         this.createList();
     }
 
+    public List<TeacherAllApplicatioonPaperInformation> getList() {
+        return list;
+    }
+
+    public void setList(List<TeacherAllApplicatioonPaperInformation> list) {
+        this.list = list;
+    }
+
     public static void main(String[] args) throws SQLException {
         TeacherApplicationInformation teacherApplicationInformation = new TeacherApplicationInformation("2020001");
         for (int i=0;i<teacherApplicationInformation.list.size();i++) {
