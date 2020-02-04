@@ -25,7 +25,7 @@ import java.sql.SQLException;
  */
 @RestController
 @RequestMapping("/applicationPaper")
-@Api(tags = "论文申请控制器", description = "小组聊天信息的增删改查方法")
+@Api(tags = "论文申请查询控制器")
 public class ApplicationPaperInformation {
 
     @ApiOperation(value = "学生论文题目申请信息")

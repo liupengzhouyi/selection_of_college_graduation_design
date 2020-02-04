@@ -2,7 +2,6 @@ package cn.liupengstudy.selection_of_college_graduation_design.service.impl;
 
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.TeacherAllApplicatioonPaperInformation;
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.linkDatabases.LinkMySQL.SelectData;
-import cn.liupengstudy.selection_of_college_graduation_design.rty;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
