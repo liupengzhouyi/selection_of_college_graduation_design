@@ -28,14 +28,14 @@ class SelectDataTest {
         }
     }
 
-    @Test
+    /*@Test
     void pppp() {
         this.init();
         System.out.println(this.selectData.getResultSet().toString());
-    }
+    }*/
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         SelectDataTest selectDataTest = new SelectDataTest();
-    }
+    }*/
 
 }

@@ -77,11 +77,11 @@ public class StudentApplicationInformation {
         this.list = list;
     }
 
-    public static void main(String[] args) throws SQLException {
+    /*public static void main(String[] args) throws SQLException {
         StudentApplicationInformation studentApplicationInformation = new StudentApplicationInformation("1667159125");
         for (int i = 0; i < studentApplicationInformation.list.size(); i++) {
             System.out.println(studentApplicationInformation.list.get(i).toString());
         }
-    }
+    }*/
     
 }

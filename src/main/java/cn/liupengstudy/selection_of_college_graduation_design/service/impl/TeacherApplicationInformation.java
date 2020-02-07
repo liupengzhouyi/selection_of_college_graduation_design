@@ -81,11 +81,11 @@ public class TeacherApplicationInformation {
         this.list = list;
     }
 
-    public static void main(String[] args) throws SQLException {
+    /*public static void main(String[] args) throws SQLException {
         TeacherApplicationInformation teacherApplicationInformation = new TeacherApplicationInformation("2020001");
         for (int i=0;i<teacherApplicationInformation.list.size();i++) {
             System.out.println(teacherApplicationInformation.list.get(i).toString());
         }
-    }
+    }*/
 
 }

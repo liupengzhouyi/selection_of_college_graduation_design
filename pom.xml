@@ -20,7 +20,7 @@
 
     <dependencies>
         <!--打包依赖-->
-        <!--<dependency>
+        <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>3.1.0</version>
@@ -32,14 +32,14 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            &lt;!&ndash; 移除嵌入式tomcat插件 &ndash;&gt;
+            <!-- 移除嵌入式tomcat插件 -->
             <exclusions>
                 <exclusion>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-starter-tomcat</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>-->
+        </dependency>
 
 
         <dependency>
@@ -76,6 +76,7 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
+            <version>8.0.16</version>
         </dependency>
 
         <dependency>
@@ -160,13 +161,6 @@
             <version>0.4.8</version>
         </dependency>
 
-        <!--对jsp的支持-->
-        <dependency>
-            <groupId>org.apache.tomcat.embed</groupId>
-            <artifactId>tomcat-embed-core</artifactId>
-            <version>9.0.30</version>
-        </dependency>
-
         <!--Tomcat版本-->
         <dependency>
             <groupId>org.apache.tomcat</groupId>
@@ -174,13 +168,6 @@
             <version>9.0.30</version>
             <scope>provided</scope>
         </dependency>
-
-        <!--配置jsp jstl的支持-->
-        <!--<dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jstl</artifactId>
-            <version>1.2</version>
-        </dependency>-->
 
         <!-- 热部署 -->
         <dependency>
