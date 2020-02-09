@@ -74,4 +74,9 @@ public class PaperTableServiceImpl implements PaperTableService {
     public List<PaperTable> getAllPaper() {
         return this.getPaperTableMapper().getAllPaper();
     }
+
+    @Override
+    public int passByID(Integer id) {
+        return this.getPaperTableMapper().passByID(id);
+    }
 }

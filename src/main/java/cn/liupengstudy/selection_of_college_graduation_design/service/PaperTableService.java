@@ -31,4 +31,6 @@ public interface PaperTableService {
     List<PaperTable> getTeacherAllPaper(String teahcerID);
 
     List<PaperTable> getAllPaper();
+
+    int passByID(Integer id);
 }

@@ -112,4 +112,7 @@
       isSelect = #{isselect,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <update id="passByID" parameterType="java.lang.Integer">
+    update paperTable set isSelect = 1 where id = #{id}
+  </update>
 </mapper>

@@ -27,4 +27,6 @@ public interface PaperTableMapper {
     List<PaperTable> getTeacherAllPaper(@Param("teahcerID") String teahcerID);
 
     List<PaperTable> getAllPaper();
+
+    int passByID(@Param("id") Integer id);
 }

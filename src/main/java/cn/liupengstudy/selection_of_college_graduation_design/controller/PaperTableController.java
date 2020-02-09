@@ -158,4 +158,19 @@ public class PaperTableController {
         return returnInformation;
     }
 
+    @ApiOperation(value = "通过论文ID设置改论文已经被申请")
+    @RequestMapping(value = "/passByID", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public ReturnInformation passByID(@RequestBody IntegerType integerType) {
+        ReturnInformation returnInformation = new ReturnInformation();
+        returnInformation.setWhatYourDo("pass Paper by id");
+        int key = this.getPaperTableService().passByID(integerType.getInteger());
+        if (key == 1) {
+            returnInformation.setKey(true);
+            returnInformation.setWhy("pass success");
+        } else {
+            returnInformation.setKey(false);
+            returnInformation.setWhy("pass error");
+        }
+        return returnInformation;
+    }
 }

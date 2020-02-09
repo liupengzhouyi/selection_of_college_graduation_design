@@ -35,7 +35,7 @@ public class StudentApplicationInformation {
 
     public void init() {
         try {
-            this.selectData = new SelectData("select applicationPaperTable.isPass, paperTable.id, paperTable.paperName, paperTable.teacherID, tDT.name from applicationPaperTable join paperTable on applicationPaperTable.paperID = paperTable.id join teachersDetailsTable tDT on paperTable.teacherID = tDT.teacherID where studentID = \'" + this.studentID + "\'");
+            this.selectData = new SelectData("select applicationPaperTable.id, applicationPaperTable.isPass, paperTable.id, paperTable.paperName, paperTable.teacherID, tDT.name from applicationPaperTable join paperTable on applicationPaperTable.paperID = paperTable.id join teachersDetailsTable tDT on paperTable.teacherID = tDT.teacherID where studentID = \'" + this.studentID + "\'");
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -47,6 +47,7 @@ public class StudentApplicationInformation {
         list = new ArrayList<StudentAllApplicationPaperInformation>();
         while (this.selectData.getResultSet().next()) {
             StudentAllApplicationPaperInformation studentAllApplicationPaperInformation = new StudentAllApplicationPaperInformation();
+            studentAllApplicationPaperInformation.setId(this.selectData.getResultSet().getInt("id"));
             studentAllApplicationPaperInformation.setIsPass(this.selectData.getResultSet().getInt("isPass"));
             studentAllApplicationPaperInformation.setPaperID(this.selectData.getResultSet().getInt("id"));
             studentAllApplicationPaperInformation.setPaperName(this.selectData.getResultSet().getString("paperName"));

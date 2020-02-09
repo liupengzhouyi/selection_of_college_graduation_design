@@ -17,13 +17,17 @@ public class TeacherAllApplicatioonPaperInformation {
     public TeacherAllApplicatioonPaperInformation() {
     }
 
-    public TeacherAllApplicatioonPaperInformation(int isPass, int paperID, String paperName, String studentNumber, String studentName) {
+    public TeacherAllApplicatioonPaperInformation(int id, int isPass, int paperID, String paperName, String studentNumber, String studentName) {
+        this.id = id;
         this.isPass = isPass;
         this.paperID = paperID;
         this.paperName = paperName;
         this.studentNumber = studentNumber;
         this.studentName = studentName;
     }
+
+    @ApiModelProperty(value = "ID")
+    private int id;
 
     @ApiModelProperty(value = "是否通过")
     private int isPass;
@@ -39,6 +43,14 @@ public class TeacherAllApplicatioonPaperInformation {
 
     @ApiModelProperty(value = "学生姓名")
     private String studentName;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public int getIsPass() {
         return isPass;
@@ -83,7 +95,8 @@ public class TeacherAllApplicatioonPaperInformation {
     @Override
     public String toString() {
         return "TeacherAllApplicatioonPaperInformation{" +
-                "isPass=" + isPass +
+                "id=" + id +
+                ", isPass=" + isPass +
                 ", paperID=" + paperID +
                 ", paperName='" + paperName + '\'' +
                 ", studentNumber='" + studentNumber + '\'' +
