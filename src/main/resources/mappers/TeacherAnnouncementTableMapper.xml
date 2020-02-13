@@ -20,6 +20,9 @@
   <select id="findByTitle" resultType="cn.liupengstudy.selection_of_college_graduation_design.pojo.TeacherAnnouncementTable">
     select * from selection_of_college_graduation_design.teacherAnnouncementTable where title = #{title}
   </select>
+  <select id="getAll" resultType="cn.liupengstudy.selection_of_college_graduation_design.pojo.TeacherAnnouncementTable">
+    select * from selection_of_college_graduation_design.teacherAnnouncementTable
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from teacherAnnouncementTable
     where id = #{id,jdbcType=INTEGER}

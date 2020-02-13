@@ -22,4 +22,6 @@ public interface TeacherAnnouncementTableMapper {
     int updateByPrimaryKey(TeacherAnnouncementTable record);
 
     List<TeacherAnnouncementTable> findByTitle(@Param("title")String string);
+
+    List<TeacherAnnouncementTable> getAll();
 }

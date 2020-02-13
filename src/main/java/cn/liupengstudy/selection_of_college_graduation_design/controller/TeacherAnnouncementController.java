@@ -104,4 +104,23 @@ public class TeacherAnnouncementController {
         return returnInformation;
     }
 
+
+    @ApiOperation(value = "查找所有教师公告信息")
+    @RequestMapping(value = "/getAll", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public ReturnInformation getAll() {
+        ReturnInformation returnInformation = new ReturnInformation();
+        returnInformation.setWhatYourDo("select all teacher announcement information");
+        List<TeacherAnnouncementTable> list = null;
+        list = this.getTeacherAnnouncementTableMapper().getAll();
+        if (list.size() != 0) {
+            returnInformation.setKey(true);
+            returnInformation.setWhy("find success");
+            returnInformation.setReturnObject(list);
+        } else {
+            returnInformation.setKey(false);
+            returnInformation.setWhy("no information in databases");
+        }
+        return returnInformation;
+    }
+
 }

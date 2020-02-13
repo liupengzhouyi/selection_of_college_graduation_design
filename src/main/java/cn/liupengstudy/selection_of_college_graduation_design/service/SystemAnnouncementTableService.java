@@ -22,4 +22,5 @@ public interface SystemAnnouncementTableService {
 
     List<SystemAnnouncementTable> isPresence(String title);
 
+    List<SystemAnnouncementTable> getAll();
 }

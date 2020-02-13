@@ -16,6 +16,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
  * 修改启动类，继承 SpringBootServletInitializer 并重写 configure 方法
  */
 
+/*
 public class SpringBootStartApplication extends SpringBootServletInitializer {
 
     @Override
@@ -25,3 +26,4 @@ public class SpringBootStartApplication extends SpringBootServletInitializer {
     }
 }
 
+*/

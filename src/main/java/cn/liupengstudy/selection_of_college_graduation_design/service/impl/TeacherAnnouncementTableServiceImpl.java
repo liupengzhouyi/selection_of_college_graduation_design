@@ -60,4 +60,9 @@ public class TeacherAnnouncementTableServiceImpl implements TeacherAnnouncementT
     public List<TeacherAnnouncementTable> findByTitle(String string) {
         return this.getTeacherAnnouncementTableMapper().findByTitle(string);
     }
+
+    @Override
+    public List<TeacherAnnouncementTable> getAll() {
+        return this.getTeacherAnnouncementTableMapper().getAll();
+    }
 }

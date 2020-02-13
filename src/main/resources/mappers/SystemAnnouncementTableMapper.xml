@@ -17,6 +17,9 @@
     from systemAnnouncementTable
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="getAll" resultType="cn.liupengstudy.selection_of_college_graduation_design.pojo.SystemAnnouncementTable">
+    select * from selection_of_college_graduation_design.systemAnnouncementTable;
+  </select>
   <select id="isPresence" resultType="cn.liupengstudy.selection_of_college_graduation_design.pojo.SystemAnnouncementTable">
     select * from selection_of_college_graduation_design.systemAnnouncementTable where title = #{title}
   </select>

@@ -20,4 +20,6 @@ public interface TeacherAnnouncementTableService {
     int updateByPrimaryKey(TeacherAnnouncementTable record);
 
     List<TeacherAnnouncementTable> findByTitle(String string);
+
+    List<TeacherAnnouncementTable> getAll();
 }

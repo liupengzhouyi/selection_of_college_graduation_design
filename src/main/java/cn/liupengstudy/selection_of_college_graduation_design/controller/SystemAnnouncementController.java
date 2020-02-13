@@ -109,4 +109,23 @@ public class SystemAnnouncementController {
         return returnInformation;
     }
 
+
+    @ApiOperation(value = "查找所有系统公告信息")
+    @RequestMapping(value = "/getAll", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public ReturnInformation getAll() {
+        List<SystemAnnouncementTable> list = null;
+        ReturnInformation returnInformation = new ReturnInformation();
+        returnInformation.setWhatYourDo("find all system announcement information in databases");
+        list = this.getSystemAnnouncementTableServiceImpl().getAll();
+        if (list.size() != 0) {
+            returnInformation.setKey(true);
+            returnInformation.setWhy("find success");
+            returnInformation.setReturnObject(list);
+        } else {
+            returnInformation.setKey(false);
+            returnInformation.setWhy("no information in databases");
+        }
+        return returnInformation;
+    }
+
 }

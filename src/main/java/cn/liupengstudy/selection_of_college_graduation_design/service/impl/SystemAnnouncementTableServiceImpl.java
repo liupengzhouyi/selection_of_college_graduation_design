@@ -56,4 +56,9 @@ public class SystemAnnouncementTableServiceImpl implements SystemAnnouncementTab
     public List<SystemAnnouncementTable> isPresence(String title) {
         return this.getSystemAnnouncementTableMapper().isPresence(title);
     }
+
+    @Override
+    public List<SystemAnnouncementTable> getAll() {
+        return this.getSystemAnnouncementTableMapper().getAll();
+    }
 }

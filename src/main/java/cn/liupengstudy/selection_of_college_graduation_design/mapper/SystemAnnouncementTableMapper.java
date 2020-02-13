@@ -22,4 +22,6 @@ public interface SystemAnnouncementTableMapper {
     int updateByPrimaryKey(SystemAnnouncementTable record);
 
     List<SystemAnnouncementTable> isPresence(@Param("title")String title);
+
+    List<SystemAnnouncementTable> getAll();
 }
