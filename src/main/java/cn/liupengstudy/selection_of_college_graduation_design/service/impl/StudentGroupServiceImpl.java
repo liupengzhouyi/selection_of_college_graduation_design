@@ -1,7 +1,7 @@
-package cn.liupengstudy.selection_of_college_graduation_design.service.group;
+package cn.liupengstudy.selection_of_college_graduation_design.service.impl;
 
-import cn.liupengstudy.selection_of_college_graduation_design.pojo.StudentAllApplicationPaperInformation;
-import cn.liupengstudy.selection_of_college_graduation_design.pojo.group.StudentGroup;
+
+import cn.liupengstudy.selection_of_college_graduation_design.pojo.StudentGroup;
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.linkDatabases.LinkMySQL.SelectData;
 
 import java.sql.SQLException;
@@ -55,13 +55,15 @@ public class StudentGroupServiceImpl {
         this.createList();
     }
 
+    public List<StudentGroup> getList() {
+        return list;
+    }
 
-
-    public static void main(String[] args) throws SQLException {
+   /* public static void main(String[] args) throws SQLException {
         StudentGroupServiceImpl studentGroupService = new StudentGroupServiceImpl("1667159125");
         for (int i = 0; i < studentGroupService.list.size(); i++) {
             System.out.println(studentGroupService.list.get(i).toString());
         }
-    }
+    }*/
 
 }

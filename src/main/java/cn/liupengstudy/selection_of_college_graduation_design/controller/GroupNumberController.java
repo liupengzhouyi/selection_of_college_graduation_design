@@ -5,6 +5,7 @@ import cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.dataTyp
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.dataType.StringType;
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.tools.returnType.ReturnInformation;
 import cn.liupengstudy.selection_of_college_graduation_design.service.impl.GroupNumberTableServiceImpl;
+import cn.liupengstudy.selection_of_college_graduation_design.service.impl.StudentGroupServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -115,7 +117,7 @@ public class GroupNumberController {
     }
 
     @ApiOperation(value = "在小组成员表中查找学生信息")
-    @RequestMapping(value = "/findBySstudentID", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/findByStudentID", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public ReturnInformation findStudent(@RequestBody StringType stringType) {
         ReturnInformation returnInformation = new ReturnInformation();
         returnInformation.setWhatYourDo("find student by studentID");
@@ -132,12 +134,20 @@ public class GroupNumberController {
         return returnInformation;
     }
 
-    @ApiOperation(value = "在小组成员表中查找学生信息")
-    @RequestMapping(value = "/findBySstudentID", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-    public ReturnInformation findGroupByStudentID(@RequestBody StringType stringType) {
+    @ApiOperation(value = "在小组成员表中查找学生的小组信息")
+    @RequestMapping(value = "/findStudentGroupInformationByStudentID", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public ReturnInformation findGroupByStudentID(@RequestBody StringType stringType) throws SQLException {
         ReturnInformation returnInformation = new ReturnInformation();
         returnInformation.setWhatYourDo("find Group by studentID");
-
+        StudentGroupServiceImpl studentGroupService = new StudentGroupServiceImpl(stringType.getString());
+        if (studentGroupService.getList().size() == 0) {
+            returnInformation.setKey(false);
+            returnInformation.setWhy("no information");
+        } else {
+            returnInformation.setKey(true);
+            returnInformation.setWhy("select success");
+            returnInformation.setReturnObject(studentGroupService.getList());
+        }
         return returnInformation;
     }
 

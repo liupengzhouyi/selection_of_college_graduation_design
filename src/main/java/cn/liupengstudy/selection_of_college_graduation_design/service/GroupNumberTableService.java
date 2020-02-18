@@ -1,7 +1,6 @@
 package cn.liupengstudy.selection_of_college_graduation_design.service;
 
 import cn.liupengstudy.selection_of_college_graduation_design.pojo.GroupNumberTable;
-import cn.liupengstudy.selection_of_college_graduation_design.pojo.group.StudentGroup;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
