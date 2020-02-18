@@ -24,6 +24,8 @@ public class GetChatInformation {
 
     List<CharInformationVersionII> listT;
 
+    List<CharInformationVersionII> list;
+
     private SelectData selectData;
 
     public GetChatInformation(int groupID) throws SQLException {
@@ -32,6 +34,7 @@ public class GetChatInformation {
         this.createListS();
         this.initT();
         this.createListT();
+        this.AddList();
     }
 
     public void initS() {
@@ -45,7 +48,7 @@ public class GetChatInformation {
     }
 
     public void createListS() throws SQLException {
-        listS = new ArrayList<CharInformationVersionII>();
+        this.listS = new ArrayList<CharInformationVersionII>();
         while (this.selectData.getResultSet().next()) {
             CharInformationVersionII charInformationVersionII = new CharInformationVersionII();
             charInformationVersionII.setId(this.selectData.getResultSet().getInt("id"));
@@ -70,7 +73,7 @@ public class GetChatInformation {
     }
 
     public void createListT() throws SQLException {
-        listT = new ArrayList<CharInformationVersionII>();
+        this.listT = new ArrayList<CharInformationVersionII>();
         while (this.selectData.getResultSet().next()) {
             CharInformationVersionII charInformationVersionII = new CharInformationVersionII();
             charInformationVersionII.setId(this.selectData.getResultSet().getInt("id"));
@@ -84,21 +87,70 @@ public class GetChatInformation {
         }
     }
 
-    public List<CharInformationVersionII> getListS() {
-        return listS;
+    public void AddList() {
+        list = new ArrayList<CharInformationVersionII>();
+        int indexS = 0;
+        int indexT = 0;
+        boolean key = true;
+        int p = 0;
+        if (listS.size() > 0 && listT.size() > 0) {
+            p = 0;
+        }
+        if (listS.size() > 0 && listT.size() == 0) {
+            p = 1;
+        }
+        if (listS.size() == 0 && listT.size() > 0) {
+            p = 2;
+        }
+        if (listS.size() == 0 && listT.size() == 0) {
+            return;
+        }
+        while(key) {
+            if (p == 1) {
+                CharInformationVersionII charInformationVersionIIS = listS.get(indexS);
+                list.add(charInformationVersionIIS);
+                indexS = indexS + 1;
+                if (indexS == listS.size()) {
+                    key = false;
+                }
+            }
+            if (p == 2) {
+                CharInformationVersionII charInformationVersionIIT = listT.get(indexT);
+                list.add(charInformationVersionIIT);
+                indexT = indexT + 1;
+                if (indexT == listT.size()) {
+                    key = false;
+                }
+            }
+            if (p == 0) {
+                CharInformationVersionII charInformationVersionIIS = listS.get(indexS);
+                CharInformationVersionII charInformationVersionIIT = listT.get(indexT);
+                if (charInformationVersionIIS.getId() > charInformationVersionIIT.getId()) {
+                    list.add(charInformationVersionIIT);
+                    indexT = indexT + 1;
+                    if (indexT == listT.size()) {
+                        p = 1;
+                    }
+                } else {
+                    list.add(charInformationVersionIIS);
+                    indexS = indexS + 1;
+                    if (indexS == listS.size()) {
+                        p = 2;
+                    }
+                }
+            }
+        }
     }
 
-    public List<CharInformationVersionII> getListT() {
-        return listT;
+    public List<CharInformationVersionII> getList() {
+        return list;
     }
 
     public static void main(String[] args) throws SQLException {
         GetChatInformation getChatInformation = new GetChatInformation(1);
-        for (int i=0;i<getChatInformation.listS.size();i++) {
-            System.out.println(getChatInformation.listS.get(i).toString());
-        }
-        for (int i=0;i<getChatInformation.listT.size();i++) {
-            System.out.println(getChatInformation.listT.get(i).toString());
+
+        for (int i=0;i<getChatInformation.getList().size();i++) {
+            System.out.println(getChatInformation.list.get(i).toString());
         }
     }
 
