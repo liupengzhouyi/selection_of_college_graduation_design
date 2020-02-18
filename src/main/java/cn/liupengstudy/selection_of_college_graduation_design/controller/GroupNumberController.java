@@ -131,4 +131,14 @@ public class GroupNumberController {
         }
         return returnInformation;
     }
+
+    @ApiOperation(value = "在小组成员表中查找学生信息")
+    @RequestMapping(value = "/findBySstudentID", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public ReturnInformation findGroupByStudentID(@RequestBody StringType stringType) {
+        ReturnInformation returnInformation = new ReturnInformation();
+        returnInformation.setWhatYourDo("find Group by studentID");
+
+        return returnInformation;
+    }
+
 }
